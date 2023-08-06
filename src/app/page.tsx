@@ -1,12 +1,13 @@
 "use client"
 import React, { useEffect, useState } from "react";
 
-import { ThemeProvider, useTheme } from 'next-themes'
+import { useTheme } from 'next-themes'
 
 import Logo from "@/components/Logo";
 import Navbar from "@/components/Navbar";
 
 import { BuildOutlined, HomeOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
+import { Layout } from "antd";
 
 
 const useBrandLookup = () => {
@@ -62,14 +63,14 @@ const Home = () => {
 
 
     return (
-        <main>
+        <Layout>
             <Navbar logo={<Logo type="logo" />}
                 navBrand={brandName}
                 navigations={navigations}
                 onClick={(e) => handleDarkMode(e)}
                 checked={theme === 'dark'}
             />
-        </main>
+        </Layout>
     )
 }
 
