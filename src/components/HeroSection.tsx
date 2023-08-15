@@ -3,13 +3,13 @@ import Logo from './Logo'
 import { Button, Space } from 'antd'
 import { DownloadOutlined, GithubOutlined, LinkedinOutlined } from '@ant-design/icons'
 
-const Header = () => {
+const Hero = () => {
     return (
         <div className="max-w-[62rem] px-10 py-5 mx-auto h-100">
-            <div className="grid grid-cols-2 ">
-                <div className='space-y-5'>
+            <div className="grid grid-cols-2 gap-3">
+                <div>
                     <h1 className='text-8xl'>Hi, I'm Evan.👋🏻</h1>
-                    <p className='text-5xl'>
+                    <p className='text-4xl'>
                         I am a <strong>front-end developer</strong>🚀 passionate for creating user experiences in the <strong>web</strong>.
                     </p>
 
@@ -26,4 +26,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Hero
