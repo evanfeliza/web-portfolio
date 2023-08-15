@@ -3,6 +3,7 @@ import { motion as m, useScroll } from 'framer-motion';
 import { Button, Drawer, Space, Switch } from 'antd';
 import { SwitchChangeEventHandler } from 'antd/es/switch';
 import { MenuOutlined } from '@ant-design/icons';
+import { Header } from 'antd/es/layout/layout';
 
 
 const useOpenDrawerNavbar = ({ checked, navigations, onClick }: {
@@ -24,8 +25,9 @@ const useOpenDrawerNavbar = ({ checked, navigations, onClick }: {
       className='dark:bg-black dark:text-white dark:ring-[1px] dark:ring-white'
       key="right"
     >
-      <ul className='space-y-5 divide-y-[1px] divide-slate-500 dark:divide-white'>
+      <ul className='h-full flex flex-col gap-5 justify-center divide-slate-500 dark:divide-white list-none'>
         {navigations?.map((navigation, index) =>
+
           <m.li
             key={index} className='flex items-center gap-2 cursor-pointer'>
             <m.span
@@ -34,15 +36,18 @@ const useOpenDrawerNavbar = ({ checked, navigations, onClick }: {
               }}
               whileTap={{ scale: 1.1 }}
             >{navigation.component}</m.span>{navigation.label}
-          </m.li>)}
-        <Space direction="vertical">
-          <Switch
-            checked={checked}
-            checkedChildren="🌙"
-            unCheckedChildren="☀️"
-            onClick={onClick}
-          />
-        </Space>
+          </m.li>
+
+        )}
+
+        <Switch
+          className='mx-auto'
+          checked={checked}
+          checkedChildren="🌙"
+          unCheckedChildren="☀️"
+          onClick={onClick}
+        />
+
       </ul>
 
 
@@ -63,26 +68,32 @@ const Navbar = ({ checked, navigations, logo, navBrand, onClick }: {
   const { scrollYProgress } = useScroll()
   const { open: openSidebar, modal: openSidebarModal } = useOpenDrawerNavbar({ checked, navigations, onClick })
   return (
-    <>
+
+    <nav className='sticky top-0 bottom-0 px-10 py-2 bg-white text-black dark:bg-black dark:text-white shadow-sm'>
       {openSidebarModal}
-      <nav className='sticky top-0 bottom-0 px-6 py-2 flex justify-between bg-white text-black dark:bg-black dark:text-white items-center shadow-md'>
+      <div className="flex max-w-[62rem] mx-auto justify-between items-center ">
         <div className='flex items-center gap-2'>
           {logo}
           <strong className="cursor-pointer">{navBrand}</strong>
         </div>
         <div className='hidden md:block'>
-          <ul className='list-none flex gap-2'>
+          <ul className='list-none flex gap-2 divide-x-[1px] divide-slate-500 dark:divide-white'>
             {navigations?.map((navigation, index) =>
-              <m.li
-                key={index} className='flex items-center gap-2 cursor-pointer'>
-                <m.span
-                  whileHover={{
-                    translateY: -3,
-                  }}
-                  whileTap={{ scale: 1.1 }}
-                >{navigation.component}</m.span>{navigation.label}
-              </m.li>)}
-            <Space direction="vertical">
+              <Space
+                key={index}
+              >
+                <m.li
+                  className='cursor-pointer'>
+                  <m.span
+                    className='mr-2'
+                    whileHover={{
+                      translateY: -3,
+                    }}
+                    whileTap={{ scale: 1.1 }}
+                  >{navigation.component}</m.span>{navigation.label}
+                </m.li>
+              </Space>)}
+            <Space>
               <Switch
                 checked={checked}
                 checkedChildren="🌙"
@@ -90,16 +101,24 @@ const Navbar = ({ checked, navigations, logo, navBrand, onClick }: {
                 onClick={onClick}
               />
             </Space>
-          </ul>
-        </div>
-        <Button icon={<MenuOutlined />}
-          onClick={() => openSidebar({ isOpen: true })}
-          className='md:hidden dark:bg-black dark:text-white'
-        />
-      </nav>
 
-      <m.div className="fixed top-15 left-0 right-0 h-[2px] bg-black dark:bg-white origin-[0%]" style={{ scaleX: scrollYProgress }} />
-    </>
+          </ul>
+
+        </div>
+        <Space className='md:hidden' >
+          <Button icon={<MenuOutlined />}
+            onClick={() => openSidebar({ isOpen: true })}
+            className='dark:bg-black dark:text-white'
+          />
+        </Space>
+      </div>
+
+
+      <m.div className="fixed top-0 right-0 left-0 bg-black dark:bg-white origin-[0%]" style={{ scaleX: scrollYProgress }} />
+
+    </nav>
+
+
   )
 }
 

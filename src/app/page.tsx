@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 
 import { useTheme } from 'next-themes'
 
+import Hero from "@/components/HeroSection"
 import Logo from "@/components/Logo";
 import Navbar from "@/components/Navbar";
 
 import { BuildOutlined, HomeOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout } from "antd";
+import { Content } from "antd/es/layout/layout";
+import { Providers } from "./providers";
 
 
 const useBrandLookup = () => {
@@ -63,14 +66,19 @@ const Home = () => {
 
 
     return (
-        <Layout>
-            <Navbar logo={<Logo type="logo" />}
-                navBrand={brandName}
-                navigations={navigations}
-                onClick={(e) => handleDarkMode(e)}
-                checked={theme === 'dark'}
-            />
-        </Layout>
+        <Providers>
+            <Layout>
+                <Navbar logo={<Logo type="logo" />}
+                    navBrand={brandName}
+                    navigations={navigations}
+                    onClick={(e) => handleDarkMode(e)}
+                    checked={theme === 'dark'}
+                />
+                <Content className="dark:bg-black dark:text-white">
+                    <Hero />
+                </Content>
+            </Layout>
+        </Providers>
     )
 }
 
