@@ -4,7 +4,7 @@ import { ThemeProvider, useTheme } from 'next-themes'
 
 export function Providers({ children }: { children: React.ReactNode }) {
     const { theme } = useTheme()
-    console.log(theme)
+
     return (
         <ConfigProvider theme={{
             token: {

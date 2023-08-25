@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { useTheme } from 'next-themes'
 
-import Hero from "./section/HeroSection";
+import Hero from "./sections/HeroSection";
 import Logo from "@/components/Logo";
 import Navbar from "@/components/Navbar";
 
@@ -75,16 +75,6 @@ const Home = () => {
           checked={theme === 'dark'}
         />
         <Content className="dark:bg-black dark:text-white">
-          <Hero />
-          <Hero />
-
-
-          <Hero />
-          <Hero />
-          <Hero /><Hero /><Hero />
-
-          <Hero />
-          <Hero />
           <Hero />
         </Content>
       </Layout>
