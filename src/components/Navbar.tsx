@@ -112,7 +112,7 @@ const Navbar = ({ checked, navigations, logo, navBrand, onClick }: {
             />
           </Space>
         </div>
-        <m.div className="absolute top-[4.1rem] left-0 h-[2px] bg-black origin-[0%] dark:bg-white z-50 w-full" style={{ scaleX: scrollYProgress }} />
+        <m.div className="absolute bottom-0 left-0 h-[2px] bg-black origin-[0%] dark:bg-white z-50 w-full" style={{ scaleX: scrollYProgress }} />
 
       </nav >
 
