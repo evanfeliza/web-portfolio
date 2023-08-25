@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion as m, useScroll } from 'framer-motion';
 import { Button, Drawer, Space, Switch } from 'antd';
 import { SwitchChangeEventHandler } from 'antd/es/switch';
-import { MenuOutlined } from '@ant-design/icons';
+import { GithubOutlined, LinkedinOutlined, MenuOutlined } from '@ant-design/icons';
 
 
 const useOpenDrawerNavbar = ({ checked, navigations, onClick }: {
@@ -24,7 +24,7 @@ const useOpenDrawerNavbar = ({ checked, navigations, onClick }: {
       className='dark:bg-black dark:text-white dark:ring-[1px] dark:ring-white'
       key="right"
     >
-      <ul className='h-full flex flex-col gap-5 justify-center divide-slate-500 dark:divide-white list-none'>
+      <ul className=' flex flex-col gap-5 justify-center divide-slate-500 dark:divide-white list-outside'>
         {navigations?.map((navigation, index) =>
 
           <m.li
@@ -39,15 +39,20 @@ const useOpenDrawerNavbar = ({ checked, navigations, onClick }: {
 
         )}
 
-        <Switch
-          className='mx-auto'
-          checked={checked}
-          checkedChildren="🌙"
-          unCheckedChildren="☀️"
-          onClick={onClick}
-        />
 
+        <div className='space-x-5'>
+          <Switch
+            className='mx-auto'
+            checked={checked}
+            checkedChildren="🌙"
+            unCheckedChildren="☀️"
+            onClick={onClick}
+          />
+          <Button type='text' icon={<GithubOutlined />} />
+          <Button type='text' icon={<LinkedinOutlined />} />
+        </div>
       </ul>
+
 
 
     </Drawer>
