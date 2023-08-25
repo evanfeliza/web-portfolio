@@ -14,82 +14,82 @@ import { Providers } from "./providers";
 
 
 const useBrandLookup = () => {
-    const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
 
-    const isDarkModeChecked = theme === "dark"
-    const brandName = "vandroidF"
-    const navigations = [
-        {
-            label: "Home",
-            component: <HomeOutlined />
-        },
-        {
-            label: "About Me",
-            component: <UserOutlined />
-        },
-        {
-            label: "Projects",
-            component: <BuildOutlined />
+  const isDarkModeChecked = theme === "dark"
+  const brandName = "vandroidF"
+  const navigations = [
+    {
+      label: "Home",
+      component: <HomeOutlined />
+    },
+    {
+      label: "About Me",
+      component: <UserOutlined />
+    },
+    {
+      label: "Projects",
+      component: <BuildOutlined />
 
-        },
-        {
-            label: "Contact",
-            component: <PhoneOutlined />
-        },
+    },
+    {
+      label: "Contact",
+      component: <PhoneOutlined />
+    },
 
-    ]
+  ]
 
-    const handleDarkMode = (toggleDarkmode: boolean) => {
-        setTheme(toggleDarkmode ? 'dark' : 'light')
-    }
-    return {
-        brandName,
-        handleDarkMode,
-        isDarkModeChecked,
-        navigations,
-        theme
-    }
+  const handleDarkMode = (toggleDarkmode: boolean) => {
+    setTheme(toggleDarkmode ? 'dark' : 'light')
+  }
+  return {
+    brandName,
+    handleDarkMode,
+    isDarkModeChecked,
+    navigations,
+    theme
+  }
 }
 
 
 const Home = () => {
-    const [mounted, setMounted] = useState(false)
-    const { brandName, handleDarkMode, navigations, theme } = useBrandLookup()
+  const [mounted, setMounted] = useState(false)
+  const { brandName, handleDarkMode, navigations, theme } = useBrandLookup()
 
-    useEffect(() => {
-        setMounted(true)
-    }, [])
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
-    if (!mounted) {
-        return null
-    }
-
-
-    return (
-        <Providers>
-            <Layout>
-                <Navbar logo={<Logo type="logo" />}
-                    navBrand={brandName}
-                    navigations={navigations}
-                    onClick={(e) => handleDarkMode(e)}
-                    checked={theme === 'dark'}
-                />
-                <Content className="dark:bg-black dark:text-white">
-                    <Hero />
-                    <Hero />
+  if (!mounted) {
+    return null
+  }
 
 
-                    <Hero />
-                    <Hero />
-                    <Hero /><Hero /><Hero />
+  return (
+    <Providers>
+      <Layout>
+        <Navbar logo={<Logo type="logo" />}
+          navBrand={brandName}
+          navigations={navigations}
+          onClick={(e) => handleDarkMode(e)}
+          checked={theme === 'dark'}
+        />
+        <Content className="dark:bg-black dark:text-white">
+          <Hero />
+          <Hero />
 
-                    <Hero />
-                    <Hero />
-                    <Hero />
-                </Content>
-            </Layout>
-        </Providers>
-    )
+
+          <Hero />
+          <Hero />
+          <Hero /><Hero /><Hero />
+
+          <Hero />
+          <Hero />
+          <Hero />
+        </Content>
+      </Layout>
+    </Providers>
+  )
 }
 
 export default Home
