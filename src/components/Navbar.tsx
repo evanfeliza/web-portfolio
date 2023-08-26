@@ -77,9 +77,9 @@ const Navbar = ({ checked, navigations, logo, navBrand, onClick }: {
     <nav className=' fixed w-full px-10 py-2 bg-white text-black dark:bg-black dark:text-white shadow-sm z-50'>
       {openSidebarModal}
       <div className="flex max-w-[62rem] mx-auto justify-between items-center ">
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2 '>
           {logo}
-          <strong className="cursor-pointer">{navBrand}</strong>
+          <strong className="cursor-pointer tracking-widest text-lg">{navBrand}</strong>
         </div>
         <div className='hidden md:block'>
           <ul className='list-none flex gap-2 divide-x-[1px] divide-slate-500 dark:divide-white'>

@@ -17,7 +17,7 @@ const useBrandLookup = () => {
   const { theme, setTheme } = useTheme()
 
   const isDarkModeChecked = theme === "dark"
-  const brandName = "vandroidF"
+  const brandName = "evan feliza"
   const navigations = [
     {
       label: "Home",
