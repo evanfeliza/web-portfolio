@@ -23,12 +23,12 @@ const ProggressbarIcon = () => {
 
 const Hero = () => {
   return (
-    <div className=" max-w-[62rem] px-10 sm:px-0 md:px-0 lg:px-0 py-5 mx-auto min-h-[85vh] h-[85vh]">
+    <div className=" max-w-[62rem] px-10 sm:px-0 md:px-0 lg:px-0 py-5 mx-auto min-h-[100vh] h-[100vh]">
       <div className="relative grid items-center justify-center grid-cols-12 gap-3 h-full">
         <div className='col-span-12'>
           <h3 className='relative text-6xl tracking-wide m-0'>Hello, I'm Evan A. Feliza.</h3>
           <p className='text-3xl tracking-widest '>
-            I am a <strong>front-end developer</strong>passionate for creating user experiences in the <strong>web</strong>.
+            I am a <strong>front-end developer</strong> passionate for creating user experiences in the <strong>web</strong>.
           </p>
           <div className='w-1/2'>
             <label className="sr-only">Download</label>

@@ -67,7 +67,7 @@ const Home = () => {
 
   return (
     <Providers>
-      <Layout>
+      <Layout className="relative">
         <Navbar logo={<Logo type="logo" />}
           navBrand={brandName}
           navigations={navigations}

@@ -73,55 +73,55 @@ const Navbar = ({ checked, navigations, logo, navBrand, onClick }: {
   const { open: openSidebar, modal: openSidebarModal } = useOpenDrawerNavbar({ checked, navigations, onClick })
 
   return (
-    <>
-      <nav className='sticky top-0 bottom-0 px-10 py-2 bg-white text-black dark:bg-black dark:text-white shadow-sm z-50'>
-        {openSidebarModal}
-        <div className="flex max-w-[62rem] mx-auto justify-between items-center ">
-          <div className='flex items-center gap-2'>
-            {logo}
-            <strong className="cursor-pointer">{navBrand}</strong>
-          </div>
-          <div className='hidden md:block'>
-            <ul className='list-none flex gap-2 divide-x-[1px] divide-slate-500 dark:divide-white'>
-              {navigations?.map((navigation, index) =>
-                <Space
-                  key={index}
-                >
-                  <m.li
-                    className='cursor-pointer'>
-                    <m.span
-                      className='mr-2'
-                      whileHover={{
-                        translateY: -3,
-                      }}
-                      whileTap={{ scale: 1.1 }}
-                    >{navigation.component}</m.span>{navigation.label}
-                  </m.li>
-                </Space>)}
-              <Space>
-                <Switch
-                  checked={checked}
-                  checkedChildren="🌙"
-                  unCheckedChildren="☀️"
-                  onClick={onClick}
-                />
-              </Space>
 
-            </ul>
-
-          </div>
-          <Space className='md:hidden' >
-            <Button icon={<MenuOutlined />}
-              onClick={() => openSidebar({ isOpen: true })}
-              className='dark:bg-black dark:text-white'
-            />
-          </Space>
+    <nav className=' fixed w-full px-10 py-2 bg-white text-black dark:bg-black dark:text-white shadow-sm z-50'>
+      {openSidebarModal}
+      <div className="flex max-w-[62rem] mx-auto justify-between items-center ">
+        <div className='flex items-center gap-2'>
+          {logo}
+          <strong className="cursor-pointer">{navBrand}</strong>
         </div>
-        <m.div className="absolute bottom-0 left-0 h-[2px] bg-black origin-[0%] dark:bg-white z-50 w-full" style={{ scaleX: scrollYProgress }} />
+        <div className='hidden md:block'>
+          <ul className='list-none flex gap-2 divide-x-[1px] divide-slate-500 dark:divide-white'>
+            {navigations?.map((navigation, index) =>
+              <Space
+                key={index}
+              >
+                <m.li
+                  className='cursor-pointer'>
+                  <m.span
+                    className='mr-2'
+                    whileHover={{
+                      translateY: -3,
+                    }}
+                    whileTap={{ scale: 1.1 }}
+                  >{navigation.component}</m.span>{navigation.label}
+                </m.li>
+              </Space>)}
+            <Space>
+              <Switch
+                checked={checked}
+                checkedChildren="🌙"
+                unCheckedChildren="☀️"
+                onClick={onClick}
+              />
+            </Space>
 
-      </nav >
+          </ul>
 
-    </>
+        </div>
+        <Space className='md:hidden' >
+          <Button icon={<MenuOutlined />}
+            onClick={() => openSidebar({ isOpen: true })}
+            className='dark:bg-black dark:text-white'
+          />
+        </Space>
+      </div>
+      <m.div className="absolute bottom-0 left-0 h-[2px] bg-black origin-[0%] dark:bg-white z-50 w-full" style={{ scaleX: scrollYProgress }} />
+
+    </nav >
+
+
   )
 }
 
