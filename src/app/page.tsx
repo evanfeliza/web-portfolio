@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 
 import { Layout } from "antd"
 
+
 import { BuildOutlined, HomeOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
 import { Content } from "antd/es/layout/layout";
 
@@ -19,7 +20,7 @@ import Loading from "./loading";
 const useBrandLookup = () => {
   const { theme, setTheme } = useTheme();
   const isDarkModeChecked = theme === "dark";
-  const brandName = "evan feliza";
+  const brandName = "evanfeliza";
   const navigations = [
     {
       label: "Home",
@@ -69,6 +70,7 @@ const Home = () => {
     <Suspense fallback={<Loading />}>
       <Providers>
         <Layout className="relative">
+
           <Navbar
             logo={<Logo type="logo" />}
             navBrand={brandName}
@@ -78,6 +80,7 @@ const Home = () => {
           />
           <Content className="dark:bg-black dark:text-white">
             <Hero />
+
           </Content>
         </Layout>
       </Providers>

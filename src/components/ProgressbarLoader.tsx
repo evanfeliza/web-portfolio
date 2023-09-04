@@ -6,8 +6,8 @@ import animatedLoadingLottie from '../assets/lotties/animated_loading_lottie.jso
 
 const ProgressbarLoader = () => {
     return (
-        <div className='h-screen w-screen flex item-center justify-center z-50'>
-            <Lottie animationData={animatedLoadingLottie} loop={true} size={50} />
+        <div className='h-screen w-screen max-h-screen max-w-screen flex item-center justify-center'>
+            <div className="h-52 w-52 my-auto"><Lottie animationData={animatedLoadingLottie} loop={true} /></div>
         </div>
 
 
