@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from 'react'
 import { motion as m, useScroll } from 'framer-motion';
 import { Button, Drawer, Space, Switch } from 'antd';
