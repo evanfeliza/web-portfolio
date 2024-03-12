@@ -1,23 +1,75 @@
 /* eslint-disable react/no-unescaped-entities */
-"use client"
-import React, { useEffect, useState } from 'react'
-import Lottie from 'react-lottie-player'
-import codeLottieDark from "../components/src/json/code-light.json"
-import codeLottieLight from "../components/src/json/code-dark.json"
-import gridLottie from "../components/src/json/grid-lottie.json"
-import SocialLinks from '../components/utils/social-links/social-links'
+"use client";
+import React, { useState, useEffect } from 'react';
+import Lottie from 'react-lottie-player';
+import codeLottieDark from "../components/src/json/code-light.json";
+import codeLottieLight from "../components/src/json/code-dark.json";
+import gridLottie from "../components/src/json/grid-lottie.json";
+import SocialLink from '../components/utils/links/social-link';
+import client from '@/components/src/sanity/sanity.client';
+import { groq } from 'next-sanity';
+import { profile } from 'console';
 
+type SocialLinks = {
+    linkedinURL: string;
+    githubURL: string;
+    googleEmail: string;
+    messengerURL: string;
+}
+
+type Profile = {
+    fullName: string;
+    description: string;
+    resumeURL: string;
+    socialLinks: SocialLinks;
+};
+
+const getProfile = async () => {
+    const data = await client.fetch(groq`*[_type == "profile" && fullName == "Evan Feliza"]{
+        fullName,
+        description,
+        "resumeURL": resumeURL.asset->url,
+        socialLinks
+    }`);
+    return data;
+};
+
+
+
+
+const SocialLinks = ({ data }: { data: SocialLinks }) => {
+
+
+    console.log(data?.githubURL)
+    return (
+        <ul className='menu menu-horizontal lg:menu-vertical'>
+            {data && <>
+                <SocialLink url={data?.githubURL} type={'github'} />
+                <SocialLink url={data?.googleEmail} type={'google'} />
+                <SocialLink url={data?.linkedinURL} type={'linkedin'} />
+                <SocialLink url={data?.messengerURL} type={'messenger'} /></>}
+        </ul>
+    );
+};
 
 const HeroSection = () => {
-    const [themeValue, setThemeValue] = useState("")
-    useEffect(() => {
+    const [themeValue, setThemeValue] = useState<string>("");
+    const [profileData, setProfileData] = useState<Profile>({} as Profile);
 
+    useEffect(() => {
+        const getProfileData = async () => {
+            const res = await getProfile();
+            setProfileData(res[0]);
+        };
+        getProfileData()
+    }, [])
+
+    useEffect(() => {
         const handleAttributeChange = () => {
             const theme = document.documentElement.getAttribute("data-theme");
-            setThemeValue(theme as string);
+            setThemeValue(theme || "");
         };
         const observer = new MutationObserver(handleAttributeChange);
-
 
         observer.observe(document.documentElement, { attributes: true });
         handleAttributeChange();
@@ -25,7 +77,8 @@ const HeroSection = () => {
         return () => {
             observer.disconnect();
         };
-    }, [setThemeValue]);
+    }, []);
+
 
 
     return (
@@ -40,17 +93,21 @@ const HeroSection = () => {
 
             <div className='h-full w-full flex flex-col lg:flex-row items-center justify-center px-6 py-4'>
                 <div className='-order-first lg:order-first'>
-                    <SocialLinks orientation='vertical' />
+                    <SocialLinks data={profileData?.socialLinks} />
                 </div>
                 <div className='text-wrap mt-14' >
-                    <h3 className='p-0 text-2xl -ml-[0.10em] lg:-m-[0.05em] lg:text-4xl font-bold '>Hi there, It's</h3>
-                    <h1 className='text-6xl lg:text-9xl font-medium tracking-tighter text-pretty -m-1 lg:-m-2'>Evan Feliza</h1>
-                    <p className='text-md font-extralight my-4 text-wrap'>
-                        An aspiring front-end developer eager to learn and grow, I'm reaching out to connect with employers who value enthusiasm and potential in creating engaging user experiences. Let's connect and discuss how I can contribute to your team's goals!</p>
-                    <button className='btn my-2 btn-outline'>
-                        <span className="mr-1">Let's Connect</span>
-                        <i className="fi fi-rr-angle-double-small-right pt-1"></i>
+                    <h3 data-aos="fade-right" data-aos-duration="2000" className='p-0 text-3xl lg:2xl -ml-[0.10em] lg:-m-[0.05em] lg:text-4xl font-bold '>Hi there, It's</h3>
+                    <h1 data-aos="fade-right" data-aos-duration="2000" className='text-6xl lg:text-9xl font-medium tracking-tighter text-pretty -m-1 lg:-m-2'>{profileData?.fullName}</h1>
+                    <p data-aos="fade-up" data-aos-duration="2000" className='text-md font-extralight my-4 text-wrap'>
+                        {profileData?.description}</p>
+
+                    <button data-aos="fade-right" className=' btn my-2 btn-outline'>
+                        <a href={`${profileData?.resumeURL}`} download target="_blank" rel="noopener noreferrer" >
+                            <span className="mr-1 uppercase tracking-widest">download my cv</span>
+                            <i className="fi fi-rr-angle-double-small-right "></i>
+                        </a>
                     </button>
+
                 </div>
 
                 <Lottie
@@ -61,12 +118,9 @@ const HeroSection = () => {
                     rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
 
                 />
-
-
-
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default HeroSection
+export default HeroSection;
