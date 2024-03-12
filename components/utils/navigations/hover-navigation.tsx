@@ -9,7 +9,7 @@ const navigations = [
     {
         id: 'home',
         name: 'home',
-        path: '#',
+        path: '',
         icon: <i className="fi fi-ss-home"></i>
     },
     {
@@ -41,9 +41,10 @@ const NavbarLinks = () => {
     const handleActiveLink = (navigation: string) => {
         router.replace(`#${navigation}`)
     }
+
     useEffect(() => {
 
-        const sections = document.querySelectorAll('div[id]');
+        const sections = document.querySelectorAll('section[id]');
 
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -64,6 +65,7 @@ const NavbarLinks = () => {
             });
         };
     }, [hash, router]);
+    console.log(activeId)
 
     return (
         <ul className='flex flex-row gap-1 lg:flex-col lg:my-auto bg-base-200 p-2 rounded-md '>
