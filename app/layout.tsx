@@ -1,7 +1,10 @@
 import 'tailwindcss/tailwind.css';
 import type { Metadata } from "next";
 import "./globals.css"
-
+import AnimateOnScroll from '@/components/utils/animations/aos';
+import Navbar from "@/components/utils/navigations/navigation"
+import HoverNavbar from "@/components/utils/navigations/hover-navigation";
+import FooterSection from "@/pages/footer-section";
 
 export const metadata: Metadata = {
   title: "Evan Feliza",
@@ -15,7 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <AnimateOnScroll />
+      <body>
+        <Navbar />
+        <HoverNavbar />
+        {children}
+        <FooterSection />
+      </body>
     </html>
   );
 }
