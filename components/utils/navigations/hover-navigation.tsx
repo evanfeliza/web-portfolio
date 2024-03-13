@@ -65,7 +65,7 @@ const NavbarLinks = () => {
             });
         };
     }, [hash, router]);
-    console.log(activeId)
+
 
     return (
         <ul className='flex flex-row gap-1 lg:flex-col lg:my-auto bg-base-200 p-2 rounded-md '>
