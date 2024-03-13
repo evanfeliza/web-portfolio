@@ -1,89 +1,96 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
+import client from '@/components/src/sanity/sanity.client';
+import { groq } from 'next-sanity';
+import classnames from 'classnames';
+import GeneratedIcon from '../generator/icon-generator';
+type Code = {
+    code: string;
+    language: string;
+}
+type Timeline = {
+    location: string;
+    event: string;
+    year: string;
+    logo: Code
+}
+type TimelineData = {
+    timeline: Timeline[]
+}
+
+
+const getEducationDetails = async () => {
+    const data = await client.fetch(groq`*[_type == "profile" && fullName == "Evan Feliza"]{
+        timeline
+      }`);
+    return data[0];
+};
+
+const useGetEducationalDetailsData = () => {
+    const [timelineData, setTimelineData] = useState<Timeline[]>([])
+    useEffect(() => {
+        const getProfileData = async () => {
+            const res = await getEducationDetails();
+            setTimelineData([...res?.timeline]);
+        };
+        getProfileData()
+
+    }, [])
+    return timelineData
+}
 
 const DesktopTimeline = () => {
+    const timelineData = useGetEducationalDetailsData()
+
     return (
         <ul className='timeline timeline-vertical overflow-x-hidden px-1 py-4 text-xl'>
-            <li>
-                <div className="timeline-start">July 2022</div>
-                <div className="timeline-middle m-2">
-                    <i className="fi fi-sr-graduation-cap "></i>
-                </div>
-                <div className="timeline-end timeline-box w-full  flex flex-wrap items-center">
-                    <p>Bachelor of Science in Computer Engineering</p>
-                    <span className="text-xs font-semibold"><i className="fi fi-ss-map-marker mr-2 "></i>STI College,Surigao City, Philippines</span>
-                </div>
-                <hr />
-            </li>
-            <li>
-                <div className="timeline-end">July 2022-January 2023</div>
-                <div className="timeline-middle">
-                    <i className="fi fi-rr-square-code m-2"></i>
-                </div>
-                <div className="timeline-start timeline-box w-full  flex flex-wrap items-center">
-                    <p>Self Study of frontend tools and web development</p>
-                    <span className="text-md text-xs font-semibold" ><i className="fi fi-ss-map-marker mr-2 "></i>Dinagat Islands, Philippines</span>
-                </div>
-                <hr />
-            </li>
-            <li>
-                <div className="timeline-start">March 2023-July 2023</div>
-                <div className="timeline-middle">
-                    <i className="fi fi-sr-briefcase m-2"></i>
-                </div>
-                <div className="timeline-end timeline-box w-full flex flex-wrap items-center ">
-                    <p>Work at startup company as a Junior Software Engineer speacializes in Front-End development</p>
-                    <span className="text-xs font-semibold"><i className="fi fi-ss-map-marker mr-2 "></i>Davao City, Philippines</span>
-                </div>
-                <hr />
-            </li>
+            {timelineData?.map((data, index) => {
+                return (<li key={index} data-aos="fade-right">
+                    <div className={classnames({ "timeline-start": index % 2 === 0, "timeline-end": index % 2 !== 0 })}>
+                        <span className='tracking-widest uppercase font-bold'>{data?.year}</span>
+                    </div>
+                    <div className="timeline-middle m-2">
+                        <GeneratedIcon icon={data?.logo?.code as string} />
+                    </div>
+                    <div className={`timeline-box p-3 w-full flex flex-wrap items-center ${classnames({ "timeline-end": index % 2 === 0, "timeline-start": index % 2 !== 0 })}`}>
+                        <p className='tracking-tight text-md'>{data?.event}</p>
+                        <span className="text-xs font-medium mt-3 ">
+                            <i className="fi fi-ss-map-marker mr-2 "></i>{data?.location}
+                        </span>
+                    </div>
+                    <hr />
+                </li>)
+            })}
         </ul>
     )
 }
 
 const MobileTimeline = () => {
+    const timelineData = useGetEducationalDetailsData()
     return (
         <ul className='timeline timeline-compact timeline-vertical overflow-x-hidden px-1 py-4'>
-            <li>
-                <div className="timeline-middle m-2">
-                    <i className="fi fi-sr-graduation-cap "></i>
+            {timelineData?.map((data, index) => (<li key={index} data-aos="fade-left">
+                <div className="timeline-start">
+                    <GeneratedIcon icon={data?.logo?.code as string} />
                 </div>
-                <div className="timeline-end timeline-box w-full  flex flex-wrap items-center">
-                    <p>Bachelor of Science in Computer Engineering</p>
-                    <span className="text-xs italic">(July 2022)</span>
-                    <span className="mt-2 text-xs font-semibold"><i className="fi fi-ss-map-marker mr-2 "></i>STI College,Surigao City, Philippines</span>
-                </div>
-                <hr />
-            </li>
-            <li>
-                <div className="timeline-middle">
-                    <i className="fi fi-rr-square-code m-2"></i>
-                </div>
-                <div className="timeline-end timeline-box w-full  flex flex-wrap items-center">
-                    <p>Self study of frontend tools and web development</p>
-                    <span className="text-xs italic">(July 2022-January 2023)</span>
-                    <span className="mt-2 text-md text-xs font-semibold" ><i className="fi fi-ss-map-marker mr-2 "></i>Dinagat Islands, Philippines</span>
+                <div className="timeline-end timeline-box w-full  flex flex-col flex-wrap p-3">
+                    <p className='text-md tracking-tight'>{data?.event}</p>
+                    <span className="text-xs tracking-wider mt-2 ">{data?.year}</span>
+                    <span className="mt-2 text-xs font-bold tracking-wider"><i className="fi fi-ss-map-marker mr-2 "></i>{data?.location}</span>
                 </div>
                 <hr />
-            </li>
-            <li>
-                <div className="timeline-middle">
-                    <i className="fi fi-sr-briefcase m-2"></i>
-                </div>
-                <div className="timeline-end timeline-box w-full flex flex-wrap items-center ">
-                    <p>Work at a startup company as a Junior Software Engineer speacializes in Front-End Development</p>
-                    <span className="text-xs italic">(March 2023-June 2023)</span>
-                    <span className="mt-2 text-xs font-semibold"><i className="fi fi-ss-map-marker mr-2 "></i>Davao City, Philippines</span>
-                </div>
-                <hr />
-            </li>
+            </li>))}
         </ul>
     )
 }
 
 const EducationAndExperiencesDetail = () => {
     return (
-        <div className="mt-4 mockup-window max-h-full max-w-full border" >
-            <div className='bg-base-200 px-6 py-4 border'>
+        <div data-aos="zoom-in"
+            data-aos-duration="500"
+            className="mt-4 mockup-window max-h-full max-w-full border" >
+            <div
+                className='bg-base-200 px-6 py-4 border'>
                 <div className='border-b pb-4'><span className='tracking-widest uppercase font-semibold text-3xl'>my timeline</span></div>
                 <div className='hidden lg:block'>
                     <DesktopTimeline />
