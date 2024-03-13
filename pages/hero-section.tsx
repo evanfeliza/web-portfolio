@@ -8,7 +8,7 @@ import gridLottie from "../components/src/json/grid-lottie.json";
 import SocialLink from '../components/utils/links/social-link';
 import client from '@/components/src/sanity/sanity.client';
 import { groq } from 'next-sanity';
-import { profile } from 'console';
+
 
 type SocialLinks = {
     linkedinURL: string;
@@ -38,9 +38,6 @@ const getProfile = async () => {
 
 
 const SocialLinks = ({ data }: { data: SocialLinks }) => {
-
-
-    console.log(data?.githubURL)
     return (
         <ul className='menu menu-horizontal lg:menu-vertical'>
             {data && <>
