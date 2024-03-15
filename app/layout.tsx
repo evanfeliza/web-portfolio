@@ -9,6 +9,9 @@ import FooterSection from "@/pages/footer-section";
 export const metadata: Metadata = {
   title: "Evan Feliza",
   description: "Built and designed by Evan",
+  icons: {
+    icon: "/app/favicon-16x16.png"
+  }
 };
 
 export default function RootLayout({

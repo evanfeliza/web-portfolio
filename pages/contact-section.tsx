@@ -31,8 +31,6 @@ const useGetEmail = () => {
 
 const ContactSection = () => {
     const email = useGetEmail()
-    console.log(email?.socialLinks?.googleEmail)
-
     return (
         <section id="contact" className='mx-auto h-auto max-h-full max-w-full border-t'>
             <div className='px-6 lg:px-12 py-6 '>
