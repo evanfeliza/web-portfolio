@@ -1,37 +1,51 @@
-import React from 'react'
+"use client"
+import { useEffect, useState } from 'react'
+import client from '@/components/src/sanity/sanity.client';
+import { groq } from 'next-sanity';
 
-const TechStackCard = () => {
-    return (
 
-        <div className='flex-shrink-0 snap-start '>
-            <img src="https://daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg" alt="Burger" />
-        </div>
-
-    )
+type TechStack = {
+    techStack: string[]
 }
+
+const getTechStackDetails = async () => {
+    const data = await client.fetch(groq`*[_type == "profile" && fullName == "Evan Feliza"]{
+        techStack
+    }`);
+    return data[0];
+};
+
+
+const useGetProjectDetailsData = () => {
+    const [techStackData, setTechStackData] = useState<TechStack>()
+    useEffect(() => {
+        const getTechStackData = async () => {
+            const res = await getTechStackDetails();
+            setTechStackData(res);
+        };
+        getTechStackData()
+
+    }, [])
+    return techStackData
+}
+
+
+const TechStackCard = ({ name }: { name: string }) => {
+    return (<div className='h-100 w-100 grayscale-[80%] cursor-pointer hover:grayscale-0 duration-300 flex items-center justify-center mt-4'>
+        <i className={`text-5xl text-base-300 devicon-${name}-plain colored mr-3`}></i>
+        <span className='hidden lg:block text-lg font-bold  uppercase tracking-wider'>{name}</span>
+    </div>)
+}
+
+
+
 const TechStackDetail = () => {
+    const data = useGetProjectDetailsData()
+
     return (
-        <div className='mt-10  pt-4'>
-            <div className='mx-auto '>
-                <h3 className="text-5xl uppercase tracking-tighter font-medium">tech stack.</h3>
-                <p className='text-md'> These are the technologies I have used so far...</p>
-            </div>
-            <div className="mx-auto max-w-[30rem] lg:max-w-[90rem] flex items-center justify-center overflow-x-auto no-scrollbar">
-                <TechStackCard />
-                <TechStackCard />
-                <TechStackCard />
-                <TechStackCard />
-                <TechStackCard />
-                <TechStackCard />
-                <TechStackCard />
-                <TechStackCard />
-                <TechStackCard />
-                <TechStackCard />
-                <TechStackCard />
-                <TechStackCard />
-                <TechStackCard />
-                <TechStackCard />
-            </div>
+
+        <div data-aos="fade-in" className="mt-5 mx-auto max-w-[30rem] lg:max-w-[90rem] grid grid-cols-2 lg:grid-cols-3 items-center gap-10">
+            {data?.techStack?.map(stack => <TechStackCard key={stack} name={stack} />)}
         </div>
     )
 }
