@@ -68,7 +68,7 @@ const NavbarLinks = () => {
 
 
     return (
-        <ul className='flex flex-row gap-1 lg:flex-col lg:my-auto bg-base-200 p-2 rounded-md '>
+        <ul className='flex flex-row gap-1 lg:my-auto bg-base-200 p-2 rounded-md '>
             {navigations?.map((navigation) => {
                 return (
                     <Link onClick={() => {
@@ -89,7 +89,7 @@ const HoverNavbar = () => {
     useEffect(() => {
         const handleScroll = () => {
 
-            setIsScroll(window.scrollY > 300);
+            setIsScroll(window.scrollY > 200);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -99,9 +99,11 @@ const HoverNavbar = () => {
     }, []);
 
     return (
-        <div className={`z-50 drop-shadow-md border-collapse fixed grid grid-row-1 bottom-2 left-1/2 -translate-x-1/2  lg:top-1/2 lg:left-11 lg:transform lg:-translate-y-1/2 transition-opacity${isScroll ? 'opacity-100 duration-300' : 'opacity-0 duration-300'}`}>
-            {isScroll && <NavbarLinks />}
+        <div className={`z-50 drop-shadow-md border-collapse fixed grid grid-row-1 bottom-2 lg:top-2 lg:bottom-auto lg:left-1/2 lg-transform lg:-translate-x-1/2 ${isScroll ? 'transition-opacity opacity-100 duration-500' : 'transition-opacity opacity-0 duration-500'}`}>
+            <NavbarLinks />
         </div>
+
+
     );
 };
 
