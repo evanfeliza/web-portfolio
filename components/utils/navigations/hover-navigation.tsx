@@ -99,9 +99,10 @@ const HoverNavbar = () => {
     }, []);
 
     return (
-        <div className={`z-50 drop-shadow-md border-collapse fixed grid grid-row-1 bottom-2 lg:top-2 lg:bottom-auto lg:left-1/2 lg-transform lg:-translate-x-1/2 ${isScroll ? 'transition-opacity opacity-100 duration-500' : 'transition-opacity opacity-0 duration-500'}`}>
+        <div className={`z-50 drop-shadow-md border-collapse fixed bottom-2 left-1/2 -translate-x-1/2 lg:top-2 lg:bottom-auto lg:left-1/2 lg-transform lg:-translate-x-1/2 ${isScroll ? 'transition-opacity opacity-100 duration-500' : 'transition-opacity opacity-0 duration-500'}`}>
             <NavbarLinks />
         </div>
+
 
 
     );
