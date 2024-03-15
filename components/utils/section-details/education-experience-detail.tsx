@@ -88,9 +88,8 @@ const EducationAndExperiencesDetail = () => {
     return (
         <div data-aos="zoom-in"
             data-aos-duration="500"
-            className="mt-4 mockup-window max-h-full max-w-full border" >
-            <div
-                className='bg-base-200 px-6 py-4 border'>
+            className="my-10 mockup-window max-h-full max-w-full border-[0.01em]" >
+            <div className='bg-base-200 px-6 py-4'>
                 <div className='border-b pb-4'><span className='tracking-widest uppercase font-semibold text-3xl'>my timeline</span></div>
                 <div className='hidden lg:block'>
                     <DesktopTimeline />
