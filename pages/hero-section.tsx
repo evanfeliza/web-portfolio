@@ -98,7 +98,11 @@ const HeroSection = () => {
                     <p data-aos="fade-up" data-aos-duration="2000" className='text-md font-extralight my-4 text-wrap'>
                         {profileData?.description}</p>
 
-                    <a href={`${profileData?.resumeURL}`} download target="_blank" rel="noopener noreferrer" data-aos="fade-right" className=' btn my-2 btn-outline'>
+                    <a href={`${profileData?.resumeURL}`}
+                        rel="noopener noreferrer"
+                        download
+                        data-aos="fade-right"
+                        className={`btn my-2 btn-outline ${!profileData?.resumeURL && "btn-disabled"}`}>
                         <span className="mr-1 uppercase tracking-widest">download my cv</span>
                         <i className="fi fi-rr-angle-double-small-right "></i>
                     </a>
