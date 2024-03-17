@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image';
 import client from '@/components/src/sanity/sanity.client';
 import { groq } from 'next-sanity';
+import classnames from 'classnames';
 
 
 
@@ -57,7 +58,7 @@ const ProjectCard = ({ data }: { data: ProjectData }) => {
                 quality={100}
                 className="object-contain lg:object-fill w-full h-full group-hover:scale-110  group-hover:opacity-75  transition-transform duration-300"
             />
-            <div className=" absolute inset-0 flex gap-2 items-center flex-col lg:flex-row justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="z-20 absolute inset-0 flex gap-2 items-center flex-col lg:flex-row justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className='join'>
                     <button className='btn join-item'>
                         <a href={`${cardData?.projectCodeLink}`} target="_blank" >
@@ -77,9 +78,6 @@ const ProjectCard = ({ data }: { data: ProjectData }) => {
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     )
 }
@@ -87,10 +85,9 @@ const ProjectCard = ({ data }: { data: ProjectData }) => {
 
 const ProjectList = () => {
     const projectData = useGetProjectDetailsData()
-    return (
-        <div data-aos="fade-up" className='grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 max-h-[25.5rem]  border-[0.01em] overflow-y-auto no-scrollbar'>
-            {projectData?.map(data => <ProjectCard data={data} key={data?.projectTitle} />)}
-        </div>
+    return (<div data-aos="fade-up" className={`grid grid-cols-1 ${classnames({ "lg:grid-cols-2 lg:grid-rows-2": projectData?.length > 1 })} max-h-[25.5rem]  border-[0.01em] overflow-y-auto no-scrollbar`}>
+        {projectData?.map(data => <ProjectCard data={data} key={data?.projectTitle} />)}
+    </div>
     )
 }
 
