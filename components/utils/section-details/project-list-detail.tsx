@@ -67,7 +67,7 @@ const ProjectCard = ({ data }: { data: ProjectData }) => {
                     </button>
                     <button className='btn join-item'>
                         <a href={`${cardData?.projectDemoLink}`} target="_blank" >
-                            <i className="fi fi-rr-share"></i>
+                            <i className="fi fi-br-link"></i>
                         </a>
                     </button>
                 </div>
