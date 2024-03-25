@@ -10,7 +10,7 @@ const SkillSection = () => {
             <div className='px-6 lg:px-12 py-6'>
                 <div data-aos="fade-up" className='mx-auto'>
                     <h3 className="text-5xl tracking-widest font-bold uppercase">skills</h3>
-                    <p className='text-md'> Here are some of my projects that I have made and list of the list of technologies used.</p>
+                    <p className='text-md'> Here are some of my personal projects that I have made so far.</p>
                 </div>
                 <div className='grid h-full mt-8'>
                     <div className="relative grid grid-cols-[15%_1fr] lg:grid-cols-[5%_1fr] ">
