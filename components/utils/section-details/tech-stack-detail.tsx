@@ -37,8 +37,6 @@ const TechStackCard = ({ name }: { name: string }) => {
     </div>)
 }
 
-
-
 const TechStackDetail = () => {
     const data = useGetProjectDetailsData()
 
