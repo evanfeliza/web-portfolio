@@ -40,7 +40,7 @@ const ContactSection = () => {
                 </div>
                 <div data-aos="fade-in" className="grid grid-cols-1 lg:grid-cols-2 mt-5 lg:mt-10">
                     <div className='flex mx-auto mt-4 lg:mt-0'>
-                        <h1 className=' text-6xl lg:text-right lg:text-[7rem] font-semibold tracking-tighter uppercase'>Let's Talk</h1>
+                        <h1 className=' text-6xl lg:text-right lg:text-[5rem] font-light tracking-wider '>Let's <span className='font-bold'>Talk</span></h1>
                     </div>
                     <div className="card card-normal mx-auto">
                         <a href={`mailto:${email?.socialLinks?.googleEmail}`} target="_blank" className=' btn my-2 btn-outline'>
