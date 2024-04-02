@@ -85,7 +85,7 @@ const ProjectCard = ({ data }: { data: ProjectData }) => {
 
 const ProjectList = () => {
     const projectData = useGetProjectDetailsData()
-    return (<div data-aos="fade-up" className={`grid grid-cols-1 ${classnames({ "lg:grid-cols-2 lg:grid-rows-2": projectData?.length > 1 })} max-h-[25.5rem]  border-[0.01em] overflow-y-auto no-scrollbar`}>
+    return (<div data-aos="fade-up" className={`mt-4 grid grid-cols-1 lg:grid-cols-3 lg:grid-flow-row h-full  border-[0.01em] overflow-y-auto no-scrollbar`}>
         {projectData?.map(data => <ProjectCard data={data} key={data?.projectTitle} />)}
     </div>
     )

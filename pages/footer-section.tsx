@@ -3,8 +3,8 @@ import React from 'react'
 
 const FooterSection = () => {
     return (
-        <div className='footer py-5 px-10 bg-base-200 text-base-content flex items-center justify-center'>
-            <span className='tracking-wider'>Built and Designed by Evan.</span>
+        <div className='footer bg-base-200 h-32 flex items-center justify-center'>
+            <span className='tracking-wider'>Designed and Built by Evan.</span>
         </div>
     )
 }

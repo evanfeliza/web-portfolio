@@ -52,7 +52,7 @@ const DesktopTimeline = () => {
                     <div className="timeline-middle m-2">
                         <GeneratedIcon icon={data?.logo?.code as string} />
                     </div>
-                    <div className={`timeline-box p-3 w-full flex flex-wrap items-center ${classnames({ "timeline-end": index % 2 === 0, "timeline-start": index % 2 !== 0 })}`}>
+                    <div className={`timeline-box p-3 w-full flex lg:flex-col flex-wrap items-start ${classnames({ "timeline-end": index % 2 === 0, "timeline-start": index % 2 !== 0 })}`}>
                         <p className='tracking-tight text-md'>{data?.event}</p>
                         <span className="text-xs font-medium mt-3 ">
                             <i className="fi fi-ss-map-marker mr-2 "></i>{data?.location}
@@ -86,10 +86,10 @@ const MobileTimeline = () => {
 
 const EducationAndExperiencesDetail = () => {
     return (
-        <div data-aos="zoom-in"
+        <div data-aos="fade-in"
             data-aos-duration="500"
             className="my-10 mockup-window max-h-full max-w-full border-[0.01em]" >
-            <div className='bg-base-200 px-6 py-4'>
+            <div className='bg-base-200 px-6 py-4 h-full'>
                 <div className='border-b pb-4'><span className='tracking-widest uppercase font-semibold text-3xl'>my timeline</span></div>
                 <div className='hidden lg:block'>
                     <DesktopTimeline />
