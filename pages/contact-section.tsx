@@ -34,7 +34,7 @@ const ContactSection = () => {
     return (
         <section id="contact" className='h-screen flex-col lg:flex-row flex items-center justify-center px-6 py-4'>
             <div data-aos="fade-up" className='mx-auto'>
-                <h3 className="text-7xl tracking-widest font-bold uppercase">contact me</h3>
+                <h3 className="text-5xl lg:text-7xl tracking-widest font-bold uppercase">contact me</h3>
                 <p className='text-md tracking-widest'> Send me an email or you can message me to my other social links.</p>
             </div>
             <div className="card card-normal mx-auto">
