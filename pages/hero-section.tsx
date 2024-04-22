@@ -101,8 +101,7 @@ const HeroSection = () => {
                     <a href={`${profileData?.resumeURL}`}
                         rel="noopener noreferrer"
                         download
-                        data-aos="fade-right"
-                        className={`btn my-2 btn-outline ${!profileData?.resumeURL && "btn-disabled"}`}>
+                        className={`btn my-2 btn-outline btn-md ${!profileData?.resumeURL && "btn-disabled"}`}>
                         <span className="mr-1 uppercase tracking-widest">download my cv</span>
                         <i className="fi fi-rr-angle-double-small-right "></i>
                     </a>
