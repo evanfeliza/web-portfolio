@@ -52,7 +52,7 @@ const ProjectCard = ({ data }: { data: ProjectData }) => {
     const [cardData] = useState<ProjectData>(data)
 
     return (
-        <div data-aos="fade-right" className='grid h-full w-full lg:grid-cols-2 border-[0.01em] group'>
+        <div data-aos="fade-right" className='grid h-full w-full lg:grid-cols-2 border-[0.01em] group bg-base-100/50'>
             <div className='overflow-hidden h-full'>
                 <Image
                     src={`${cardData?.projectImage}`}
@@ -60,7 +60,7 @@ const ProjectCard = ({ data }: { data: ProjectData }) => {
                     width={1080}
                     height={920}
                     quality={100}
-                    className="object-contain lg:object-fill h-full group-hover:scale-110  group-hover:opacity-75  transition-transform duration-300"
+                    className="object-contain lg:object-fill h-full group-hover:scale-105 transition-transform duration-300"
                 />
             </div>
             <div className='px-6 py-4'>

@@ -68,17 +68,14 @@ const DesktopTimeline = () => {
 const MobileTimeline = () => {
     const timelineData = useGetEducationalDetailsData()
     return (
-        <ul className='timeline timeline-compact timeline-vertical overflow-x-hidden px-1 py-4'>
-            {timelineData?.map((data, index) => (<li key={index} data-aos="fade-left">
-                <div className="timeline-start">
-                    <GeneratedIcon icon={data?.logo?.code as string} />
+        <ul className='grid grid-cols-1 gap-4'>
+            {timelineData?.map((data, index) => (<li key={index} data-aos="fade-up" className='card card-compact bg-base-100'>
+                <div className='card-body !gap-1'>
+                    <div className='text-2xl'><GeneratedIcon icon={data?.logo?.code as string} /></div>
+                    <p className='text-md font-normal break-normal tracking-tight'>{data?.event}</p>
+                    <span className="text-md tracking-wider font-semibold mt-2 ">{data?.year}</span>
+                    <span className="mt-2 text-xs  tracking-wider"><i className="fi fi-ss-map-marker mr-2 "></i>{data?.location}</span>
                 </div>
-                <div className="timeline-end timeline-box w-full  flex flex-col flex-wrap p-3">
-                    <p className='text-md tracking-tight'>{data?.event}</p>
-                    <span className="text-xs tracking-wider mt-2 ">{data?.year}</span>
-                    <span className="mt-2 text-xs font-bold tracking-wider"><i className="fi fi-ss-map-marker mr-2 "></i>{data?.location}</span>
-                </div>
-                <hr />
             </li>))}
         </ul>
     )
@@ -87,7 +84,7 @@ const MobileTimeline = () => {
 const EducationAndExperiencesDetail = () => {
     return (
         <div className="my-10 mockup-window max-h-full max-w-full border-[0.01em]" >
-            <div className='bg-base-200 px-6 py-4 h-full'>
+            <div className='bg-base-200 p-4 h-full'>
                 <div className='border-b pb-4' ><span data-aos="fade-in" className='tracking-widest uppercase font-semibold text-3xl'>my timeline</span></div>
                 <div className='hidden lg:block'>
                     <DesktopTimeline />
