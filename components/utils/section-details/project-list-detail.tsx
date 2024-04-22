@@ -15,6 +15,7 @@ type ProjectData = {
     projectDemoLink: string
     projectImage: string;
     projectTitle: string;
+    projectDescription: string;
     techTags: string[]
 }
 
@@ -24,6 +25,7 @@ const getProjectDetails = async () => {
         projectCodeLink,
         projectDemoLink,
         projectTitle,
+        projectDescription,
         "projectImage": projectImage.asset->url,
         techTags
       }}`);
@@ -45,41 +47,43 @@ const useGetProjectDetailsData = () => {
 }
 
 
+
 const ProjectCard = ({ data }: { data: ProjectData }) => {
     const [cardData] = useState<ProjectData>(data)
 
     return (
-        <div data-aos="fade-up" className="h-full relative group overflow-hidden bg-base-300">
-            <Image
-                src={`${cardData?.projectImage}`}
-                alt={`${cardData?.projectTitle}`}
-                width={1280}
-                height={720}
-                quality={100}
-                className="object-contain lg:object-fill w-full h-full group-hover:scale-110  group-hover:opacity-75  transition-transform duration-300"
-            />
-            <div className="z-20 absolute inset-0 flex gap-2 items-center flex-col lg:flex-row justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className='absolute bg-base-300 bottom-0 left-0 px-4 py-3 w-full drop-shadow-sm'>
-                    <div className='flex justify-between items-center'>
-                        <h1 className='uppercase tracking-wider font-semibold'>{cardData.projectTitle}</h1>
-                        <div className='join'>
-                            <button className='btn btn-ghost btn-sm join-item'>
-                                <a href={`${cardData?.projectCodeLink}`} target="_blank" >
-                                    <i className="fi fi-brands-github"></i>
-                                </a>
-                            </button>
-                            <button className='btn btn-ghost btn-sm join-item'>
-                                <a href={`${cardData?.projectDemoLink}`} target="_blank" >
-                                    <i className="fi fi-br-link"></i>
-                                </a>
-                            </button>
-                        </div>
-                    </div>
-                    <div className='flex flex-wrap gap-1 mt-2'>
-                        {cardData?.techTags.map(techTag => <span key={techTag} className='badge badge-xs badge-ghost text-xs' >{`#${techTag}`}</span>)}
-                    </div>
+        <div data-aos="fade-right" className='grid h-full w-full lg:grid-cols-2 border-[0.01em] group'>
+            <div className='overflow-hidden h-full'>
+                <Image
+                    src={`${cardData?.projectImage}`}
+                    alt={`${cardData?.projectTitle}`}
+                    width={1080}
+                    height={920}
+                    quality={100}
+                    className="object-contain lg:object-fill h-full group-hover:scale-110  group-hover:opacity-75  transition-transform duration-300"
+                />
+            </div>
+            <div className='px-6 py-4'>
+                <div className='join items-center'>
+                    <h1 className='uppercase tracking-wider font-semibold text-2xl mr-4'>{cardData.projectTitle}</h1>
+                    <button className='btn btn-ghost btn-sm join-item'>
+                        <a href={`${cardData?.projectCodeLink}`} target="_blank" >
+                            <i className="fi fi-brands-github"></i>
+                        </a>
+                    </button>
+                    <button className='btn btn-ghost btn-sm join-item'>
+                        <a href={`${cardData?.projectDemoLink}`} target="_blank" >
+                            <i className="fi fi-br-link"></i>
+                        </a>
+                    </button>
+                </div>
+                <p className='text-wrap tracking-widest text-md font-medium mt-2 whitespace-normal break-normal'>{cardData?.projectDescription}</p>
+
+                <div className='flex flex-wrap gap-1 mt-4 lg:mt-2'>
+                    {cardData?.techTags.map(techTag => <span key={techTag} className='badge badge-md badge-accent text-xs' >{`#${techTag}`}</span>)}
                 </div>
             </div>
+
         </div>
     )
 }
@@ -87,7 +91,7 @@ const ProjectCard = ({ data }: { data: ProjectData }) => {
 
 const ProjectList = () => {
     const projectData = useGetProjectDetailsData()
-    return (<div data-aos="fade-up" className={`mt-4 grid grid-rows-auto lg:grid-cols-3 h-1/4  border-[0.01em] overflow-y-auto no-scrollbar`}>
+    return (<div className={`mt-4 grid grid-rows-auto lg:grid-cols-1 h-full `}>
         {projectData?.map(data => <ProjectCard data={data} key={data?.projectTitle} />)}
     </div>
     )
