@@ -7,7 +7,7 @@ const Loader = () => {
     useEffect(() => {
         const duration = setTimeout(() => {
             setIsLoading(prevState => !prevState);
-        }, 3000)
+        }, 5000)
         return () => clearTimeout(duration);
     }, [])
     return (

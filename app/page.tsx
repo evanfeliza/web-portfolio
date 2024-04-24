@@ -13,7 +13,7 @@ export default async function Home() {
     return (
         <section className="relative h-screen min-w-screen">
             <Loader />
-            <div className="container mx-auto">
+            <div className="container h-full mx-auto">
                 <Navbar />
                 <HoverNavbar />
                 <HeroSection />
