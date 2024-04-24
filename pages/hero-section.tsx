@@ -79,7 +79,7 @@ const HeroSection = () => {
 
 
     return (
-        <section id="home" className='relative mx-auto h-screen max-h-screen w-full'>
+        <section id="home" className='relative mx-auto min-h-full'>
             <Lottie
                 loop
                 animationData={gridLottie}
@@ -88,33 +88,35 @@ const HeroSection = () => {
                 rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
             />
 
-            <div className='h-full w-full flex flex-col lg:flex-row items-center justify-center px-6 py-4'>
-                <div className='-order-first lg:order-first'>
-                    <SocialLinks data={profileData?.socialLinks} />
+            <div className='max-h-full'>
+                <div className="flex flex-col lg:flex-row items-center justify-center px-6 py-4">
+                    <div className='-order-first lg:order-first'>
+                        <SocialLinks data={profileData?.socialLinks} />
+                    </div>
+                    <div className='text-wrap mt-20 mb-0 lg:my-40 space-y-2'>
+                        <h3 data-aos="fade-right" data-aos-duration="2000" className='p-0 text-2xl lg:2xl lg:-m-[0.05em] font-sans  lg:text-4xl font-medium tracking-wide'>Hi there, It's</h3>
+                        <h1 data-aos="fade-right" data-aos-duration="2000" className='text-5xl lg:text-9xl font-bold font-sans tracking-widest lg:tracking-tight text-pretty'>{profileData?.fullName}</h1>
+                        <p data-aos="fade-up" data-aos-duration="2000" className='text-md font-light font-sans my-4 text-wrap'>
+                            {profileData?.description}</p>
+
+                        <a href={`${profileData?.resumeURL}`}
+                            rel="noopener noreferrer"
+                            download
+                            className={`btn my-2 btn-outline btn-md ${!profileData?.resumeURL && "btn-disabled"}`}>
+                            <span className="mr-1 uppercase tracking-widest">download my cv</span>
+                            <i className="fi fi-rr-angle-double-small-right "></i>
+                        </a>
+                    </div>
+                    <Lottie
+                        loop
+                        animationData={themeValue === "lofi" ? codeLottieLight : codeLottieDark}
+                        play
+                        style={{ order: 9999, width: "auto  ", height: "auto" }}
+                        rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
+
+                    />
                 </div>
-                <div className='text-wrap mt-14' >
-                    <h3 data-aos="fade-right" data-aos-duration="2000" className='p-0 text-3xl lg:2xl -ml-[0.10em] lg:-m-[0.05em] lg:text-4xl font-bold '>Hi there, It's</h3>
-                    <h1 data-aos="fade-right" data-aos-duration="2000" className='text-6xl lg:text-9xl font-medium tracking-tighter text-pretty -m-1 lg:-m-2'>{profileData?.fullName}</h1>
-                    <p data-aos="fade-up" data-aos-duration="2000" className='text-md font-extralight my-4 text-wrap'>
-                        {profileData?.description}</p>
 
-                    <a href={`${profileData?.resumeURL}`}
-                        rel="noopener noreferrer"
-                        download
-                        className={`btn my-2 btn-outline btn-md ${!profileData?.resumeURL && "btn-disabled"}`}>
-                        <span className="mr-1 uppercase tracking-widest">download my cv</span>
-                        <i className="fi fi-rr-angle-double-small-right "></i>
-                    </a>
-                </div>
-
-                <Lottie
-                    loop
-                    animationData={themeValue === "lofi" ? codeLottieLight : codeLottieDark}
-                    play
-                    style={{ order: 9999, width: "auto  ", height: "auto" }}
-                    rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
-
-                />
             </div>
         </section>
     );
