@@ -37,7 +37,7 @@ const ContactSection = () => {
                 <h3 className="text-4xl lg:text-7xl tracking-widest font-bold uppercase text-center">contact me</h3>
                 <p className='text-xs lg:text-lg tracking-widest whitespace-normal text-center'> Send me an email or you can message me to my other social links.</p>
             </div>
-            <div data-aos="fade-in" className="card card-normal mx-auto mt-4 lg:mt-0">
+            <div data-aos="fade-in" data-aos-duration="2000" className="card card-normal mx-auto mt-4 lg:mt-0">
                 <a href={`mailto:${email?.socialLinks?.googleEmail}`} target="_blank" className=' btn my-2 btn-outline'>
                     <span className="mr-1">Send an Email</span>
                     <i className="fi fi-rs-paper-plane"></i>

@@ -52,7 +52,7 @@ const ProjectCard = ({ data }: { data: ProjectData }) => {
     const [cardData] = useState<ProjectData>(data)
 
     return (
-        <div data-aos="fade-right" className='grid h-full w-full lg:grid-cols-2 border-[0.01em] group bg-base-100/50'>
+        <div className='grid h-full w-full lg:grid-cols-2 border-[0.01em] group bg-base-100/50'>
             <div className='overflow-hidden h-full'>
                 <Image
                     src={`${cardData?.projectImage}`}
@@ -65,7 +65,7 @@ const ProjectCard = ({ data }: { data: ProjectData }) => {
             </div>
             <div className='px-6 py-4'>
                 <div className='join items-center'>
-                    <h1 className='uppercase tracking-wider font-semibold text-2xl mr-4'>{cardData.projectTitle}</h1>
+                    <h1 className='uppercase tracking-wider font-semibold text-2xl mr-4 group-hover:underline group-hover:underline-offset-4'>{cardData.projectTitle}</h1>
                     <button className='btn btn-ghost btn-sm join-item'>
                         <a href={`${cardData?.projectCodeLink}`} target="_blank" >
                             <i className="fi fi-brands-github"></i>

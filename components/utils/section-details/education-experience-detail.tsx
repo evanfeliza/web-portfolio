@@ -45,7 +45,7 @@ const DesktopTimeline = () => {
     return (
         <ul className='timeline timeline-vertical overflow-x-hidden px-1 py-4 text-xl'>
             {timelineData?.map((data, index) => {
-                return (<li key={index} data-aos-duration="2500" data-aos={classnames({ "fade-right": index % 2 === 0, "fade-left": index % 2 !== 0 })}>
+                return (<li key={index}>
                     <div className={classnames({ "timeline-start": index % 2 === 0, "timeline-end": index % 2 !== 0 })}>
                         <span className='tracking-widest uppercase font-bold'>{data?.year}</span>
                     </div>
@@ -69,7 +69,7 @@ const MobileTimeline = () => {
     const timelineData = useGetEducationalDetailsData()
     return (
         <ul className='grid grid-cols-1 gap-4'>
-            {timelineData?.map((data, index) => (<li key={index} data-aos="fade-up" className='card card-compact bg-base-100'>
+            {timelineData?.map((data, index) => (<li key={index} className='card card-compact bg-base-100'>
                 <div className='card-body !gap-1'>
                     <div className='text-2xl'><GeneratedIcon icon={data?.logo?.code as string} /></div>
                     <p className='text-md font-normal break-normal tracking-tight'>{data?.event}</p>
@@ -83,9 +83,9 @@ const MobileTimeline = () => {
 
 const EducationAndExperiencesDetail = () => {
     return (
-        <div className="my-10 mockup-window max-h-full max-w-full border-[0.01em]" >
+        <div data-aos="fade-up" data-aos-duration="1000" className="my-10 mockup-window max-h-full max-w-full border-[0.01em]" >
             <div className='bg-base-200 p-4 h-full'>
-                <div className='border-b pb-4' ><span data-aos="fade-in" className='tracking-widest uppercase font-semibold text-3xl'>my timeline</span></div>
+                <div className='border-b pb-4' ><span className='tracking-widest uppercase font-semibold text-3xl'>my timeline</span></div>
                 <div className='hidden lg:block'>
                     <DesktopTimeline />
                 </div>
