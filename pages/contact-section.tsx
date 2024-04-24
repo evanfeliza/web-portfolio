@@ -33,9 +33,9 @@ const ContactSection = () => {
     const email = useGetEmail()
     return (
         <section id="contact" className='h-screen flex-col lg:flex-row flex items-center justify-center px-6 py-4'>
-            <div className='mx-auto'>
+            <div className='mx-auto space-y-2'>
                 <h3 className="text-4xl lg:text-7xl tracking-widest font-bold uppercase text-center">contact me</h3>
-                <p className='text-md tracking-widest whitespace-normal text-center'> Send me an email or you can message me to my other social links.</p>
+                <p className='text-xs lg:text-lg tracking-widest whitespace-normal text-center'> Send me an email or you can message me to my other social links.</p>
             </div>
             <div data-aos="fade-in" className="card card-normal mx-auto mt-4 lg:mt-0">
                 <a href={`mailto:${email?.socialLinks?.googleEmail}`} target="_blank" className=' btn my-2 btn-outline'>
