@@ -6,10 +6,10 @@ import React from 'react'
 const AboutSection = () => {
 
     return (
-        <section id="about" className='mx-auto bg-base-100/40 px-6 lg:px-12 py-6'>
-            <div data-aos="fade-in" data-aos-duration="2000" className='mx-auto'>
+        <section id="about" className='mx-auto bg-base-100/40 px-6 lg:px-12 py-16'>
+            <div data-aos="fade-in" data-aos-duration="2000" className='mx-auto mb-20'>
                 <h3 className="text-5xl tracking-widest font-bold uppercase">about me</h3>
-                <p className='text-md'> I am passionate in writting codes, exploring and resolving code problems. I like building and creating interactive interface for web applications.</p>
+                <p className='text-lg tracking-wider mt-5'> I am passionate in writting codes, exploring and resolving code problems. I like building and creating interactive interface for web applications.</p>
             </div>
             <EducationAndExperiencesDetail />
         </section>

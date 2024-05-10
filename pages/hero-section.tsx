@@ -79,7 +79,7 @@ const HeroSection = () => {
 
 
     return (
-        <section id="home" className='relative mx-auto min-h-full'>
+        <section id="home" className='relative mx-auto h-auto'>
             <Lottie
                 loop
                 animationData={gridLottie}
@@ -93,10 +93,10 @@ const HeroSection = () => {
                     <div className='-order-first lg:order-first'>
                         <SocialLinks data={profileData?.socialLinks} />
                     </div>
-                    <div className='text-wrap mt-20 mb-0 lg:my-40 space-y-2'>
-                        <h3 data-aos="fade-right" data-aos-duration="2000" className='p-0 text-2xl lg:2xl lg:-m-[0.05em] font-sans  lg:text-4xl font-medium tracking-wide'>Hi there, It's</h3>
-                        <h1 data-aos="fade-right" data-aos-duration="2000" className='text-5xl lg:text-9xl font-bold font-sans tracking-widest lg:tracking-tight text-pretty'>{profileData?.fullName}</h1>
-                        <p data-aos="fade-up" data-aos-duration="2000" className='text-md font-light font-sans my-4 text-wrap'>
+                    <div className='text-wrap mt-16 mb-0 lg:my-40 space-y-4'>
+                        <h3 data-aos="fade-right" data-aos-duration="2000" className='p-0 text-xl lg:text-4xl font-medium tracking-tight'>Hi there, It's</h3>
+                        <h1 data-aos="fade-right" data- aos-duration="2000" className='text-5xl lg:text-8xl font-bold tracking-widest lg:tracking-tight text-pretty'>{profileData?.fullName}</h1>
+                        <p data-aos="fade-up" data-aos-duration="2000" className='leading-8 text-md tracking-wider font-light my-4 text-wrap'>
                             {profileData?.description}</p>
 
                         <a href={`${profileData?.resumeURL}`}

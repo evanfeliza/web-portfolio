@@ -10,7 +10,7 @@
 :root {
     scroll-behavior: smooth !important;
 }
-body{
+html{
     font-family: "Poppins", sans-serif;
 }
 
@@ -55,3 +55,4 @@ body{
     0%,50%   {bottom: 8px}
     90%,100% {bottom: 8.1px}
   }
+ 

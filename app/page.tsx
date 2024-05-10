@@ -8,12 +8,11 @@ import Navbar from "@/components/utils/navigations/navigation";
 import HoverNavbar from "@/components/utils/navigations/hover-navigation";
 
 
-
 export default async function Home() {
     return (
-        <section className="relative h-screen min-w-screen">
+        <section className="h-screen min-w-screen">
             <Loader />
-            <div className="container h-full mx-auto">
+            <div className="container relative h-full w-full mx-auto">
                 <Navbar />
                 <HoverNavbar />
                 <HeroSection />
