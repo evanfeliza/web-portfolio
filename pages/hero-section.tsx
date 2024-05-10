@@ -93,10 +93,10 @@ const HeroSection = () => {
                     <div className='-order-first lg:order-first'>
                         <SocialLinks data={profileData?.socialLinks} />
                     </div>
-                    <div className='text-wrap mt-16 mb-0 lg:my-40 space-y-4'>
-                        <h3 data-aos="fade-right" data-aos-duration="2000" className='p-0 text-xl lg:text-4xl font-medium tracking-tight'>Hi there, It's</h3>
-                        <h1 data-aos="fade-right" data- aos-duration="2000" className='text-5xl lg:text-8xl font-bold tracking-widest lg:tracking-tight text-pretty'>{profileData?.fullName}</h1>
-                        <p data-aos="fade-up" data-aos-duration="2000" className='leading-8 text-md tracking-wider font-light my-4 text-wrap'>
+                    <div className='text-wrap mt-20 mb-0 lg:my-28 space-y-4'>
+                        <h3 data-aos="fade-right" data-aos-duration="2000" className='p-0 text-2xl lg:text-4xl font-medium tracking-wider'>Hi there, It's</h3>
+                        <h1 data-aos="fade-right" data- aos-duration="2000" className='text-7xl lg:text-8xl font-bold tracking-wide lg:tracking-tight text-pretty'>{profileData?.fullName}</h1>
+                        <p data-aos="fade-up" data-aos-duration="2000" className='leading-7 text-lg lg:text-xl lg:text-md tracking-wider font-light my-4 text-wrap'>
                             {profileData?.description}</p>
 
                         <a href={`${profileData?.resumeURL}`}
