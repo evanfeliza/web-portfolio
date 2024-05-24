@@ -8,6 +8,7 @@ import gridLottie from "../components/src/json/grid-lottie.json";
 import SocialLink from '../components/utils/links/social-link';
 import client from '@/components/src/sanity/sanity.client';
 import { groq } from 'next-sanity';
+import Link from 'next/link';
 
 
 type SocialLinks = {
@@ -99,13 +100,10 @@ const HeroSection = () => {
                         <p data-aos="fade-up" data-aos-duration="2000" className='leading-7 text-lg lg:text-xl lg:text-md tracking-wider font-light my-4 text-wrap'>
                             {profileData?.description}</p>
 
-                        <a href={`${profileData?.resumeURL}`}
-                            rel="noopener noreferrer"
-                            download
-                            className={`btn my-2 btn-outline btn-md ${!profileData?.resumeURL && "btn-disabled"}`}>
+                        <Link href={`${profileData?.resumeURL}`} target="_blank" rel="noopener noreferrer" className={`btn my-2 btn-outline btn-md ${!profileData?.resumeURL && "btn-disabled"}`}>
                             <span className="mr-1 uppercase tracking-widest">download my cv</span>
                             <i className="fi fi-rr-angle-double-small-right "></i>
-                        </a>
+                        </Link>
                     </div>
                     <Lottie
                         loop
