@@ -1,33 +1,15 @@
-"use client"
 import { useEffect, useState } from 'react'
-import client from '@/components/src/sanity/sanity.client';
+import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 
 
 type TechStack = {
     techStack: string[]
 }
+const getTechStackDetail = groq`*[_type == "profile" && fullName == "Evan Feliza"]{
+    techStack
+}[0]`
 
-const getTechStackDetails = async () => {
-    const data = await client.fetch(groq`*[_type == "profile" && fullName == "Evan Feliza"]{
-        techStack
-    }`);
-    return data[0];
-};
-
-
-const useGetProjectDetailsData = () => {
-    const [techStackData, setTechStackData] = useState<TechStack>()
-    useEffect(() => {
-        const getTechStackData = async () => {
-            const res = await getTechStackDetails();
-            setTechStackData(res);
-        };
-        getTechStackData()
-
-    }, [])
-    return techStackData
-}
 
 
 const TechStackCard = ({ name }: { name: string }) => {
@@ -37,9 +19,8 @@ const TechStackCard = ({ name }: { name: string }) => {
     </div>)
 }
 
-const TechStackDetail = () => {
-    const data = useGetProjectDetailsData()
-
+const TechStackDetail = async () => {
+    const data = await client.fetch<TechStack>(getTechStackDetail)
     return (
 
         <div data-aos="fade-in" data-aos-duration="2000" className="mt-5 mx-auto max-w-[30rem] lg:max-w-[90rem] grid grid-cols-2 lg:grid-cols-3 items-center gap-10">

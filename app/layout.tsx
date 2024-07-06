@@ -5,7 +5,7 @@ import AnimateOnScroll from '@/components/utils/animations/aos';
 
 export const metadata: Metadata = {
   title: "Evan Feliza",
-  description: "Built and designed by Evan",
+  description: "A personal web porfolio designed and build to showcase personal information and skills of a person. This application was built and designed by Evan.",
   icons: {
     icon: "/app/favicon-16x16.png"
   }

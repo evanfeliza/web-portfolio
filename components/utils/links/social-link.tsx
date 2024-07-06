@@ -2,7 +2,7 @@ import React from 'react'
 
 const SocialLink = ({ type, url }: {
     type: 'github' | 'linkedin' | 'google' | 'messenger';
-    url: string;
+    url?: string;
 }) => {
 
     return <>

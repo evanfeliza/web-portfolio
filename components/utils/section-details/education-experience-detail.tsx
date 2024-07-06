@@ -1,6 +1,4 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-import client from '@/components/src/sanity/sanity.client';
+import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 import classnames from 'classnames';
 import GeneratedIcon from '../generator/icon-generator';
@@ -14,34 +12,14 @@ type Timeline = {
     year: string;
     logo: Code
 }
-type TimelineData = {
-    timeline: Timeline[]
-}
 
 
-const getEducationDetails = async () => {
-    const data = await client.fetch(groq`*[_type == "profile" && fullName == "Evan Feliza"]{
-        timeline
-      }`);
-    return data[0];
-};
+const getEducationDetails = groq`*[_type == "profile" && fullName == "Evan Feliza"]{
+    timeline
+  }[0].timeline`
 
-const useGetEducationalDetailsData = () => {
-    const [timelineData, setTimelineData] = useState<Timeline[]>([])
-    useEffect(() => {
-        const getProfileData = async () => {
-            const res = await getEducationDetails();
-            setTimelineData([...res?.timeline]);
-        };
-        getProfileData()
 
-    }, [])
-    return timelineData
-}
-
-const DesktopTimeline = () => {
-    const timelineData = useGetEducationalDetailsData()
-
+const DesktopTimeline = ({ timelineData }: { timelineData?: Timeline[] }) => {
     return (
         <ul className='timeline timeline-vertical overflow-x-hidden px-1 py-4 text-xl'>
             {timelineData?.map((data, index) => {
@@ -65,8 +43,9 @@ const DesktopTimeline = () => {
     )
 }
 
-const MobileTimeline = () => {
-    const timelineData = useGetEducationalDetailsData()
+const MobileTimeline = ({ timelineData }: { timelineData?: Timeline[] }) => {
+
+
     return (
         <ul className='grid grid-cols-1 gap-4'>
             {timelineData?.map((data, index) => (<li key={index} className='card card-compact bg-base-100'>
@@ -81,16 +60,17 @@ const MobileTimeline = () => {
     )
 }
 
-const EducationAndExperiencesDetail = () => {
+const EducationAndExperiencesDetail = async () => {
+    const timelineData = await client.fetch<Timeline[]>(getEducationDetails)
     return (
         <div data-aos="fade-up" data-aos-duration="1000" className="my-10 mockup-window max-h-full max-w-full border-[0.01em]" >
             <div className='bg-base-200 p-4 h-full'>
                 <div className='border-b pb-4' ><span className='tracking-widest uppercase font-semibold text-3xl'>my timeline</span></div>
                 <div className='hidden lg:block'>
-                    <DesktopTimeline />
+                    <DesktopTimeline timelineData={timelineData} />
                 </div>
                 <div className="block lg:hidden">
-                    <MobileTimeline />
+                    <MobileTimeline timelineData={timelineData} />
                 </div>
             </div>
         </div >

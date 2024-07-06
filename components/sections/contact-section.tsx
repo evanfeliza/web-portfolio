@@ -1,7 +1,4 @@
-"use client"
-/* eslint-disable react/no-unescaped-entities */
-import { useEffect, useState } from 'react';
-import client from '@/components/src/sanity/sanity.client';
+import { client } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 
 
@@ -10,27 +7,12 @@ type SocialLink = {
         googleEmail: string;
     }
 }
-const getEmail = async () => {
-    const data = await client.fetch(groq`*[_type == "profile" && fullName == "Evan Feliza"]{socialLinks{googleEmail}}`);
-    return data[0];
-};
 
-const useGetEmail = () => {
-    const [emailData, setEmailData] = useState<SocialLink>()
-    useEffect(() => {
-        const getEmailData = async () => {
-            const res = await getEmail();
-            setEmailData(res);
-        };
-        getEmailData()
+const getEmail = groq`*[_type == "profile" && fullName == "Evan Feliza"]{socialLinks{googleEmail}}[0]`
 
-    }, [])
-    return emailData
-}
+const ContactSection = async () => {
+    const email = await client.fetch<SocialLink>(getEmail)
 
-
-const ContactSection = () => {
-    const email = useGetEmail()
     return (
         <section id="contact" className='flex-col lg:flex-row flex items-center justify-center px-6 py-[20rem]'>
             <div className='mx-auto space-y-2'>

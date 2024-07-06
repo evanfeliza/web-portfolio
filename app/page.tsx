@@ -1,27 +1,29 @@
-import HeroSection from "@/pages/hero-section";
-import AboutSection from "@/pages/about-section";
-import SkillSection from "@/pages/skills-section";
-import ContactSection from "@/pages/contact-section";
-import Loader from "@/components/utils/loaders/loader";
-import FooterSection from "@/pages/footer-section";
+import HeroSection from "@/components/sections/hero-section";
+import AboutSection from "@/components/sections/about-section";
+import SkillSection from "@/components/sections/skills-section";
+import ContactSection from "@/components/sections/contact-section";
+import FooterSection from "@/components/sections/footer-section";
 import Navbar from "@/components/utils/navigations/navigation";
 import HoverNavbar from "@/components/utils/navigations/hover-navigation";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 
-export default async function Home() {
+
+export default function Home() {
     return (
         <section className="h-screen min-w-screen">
-            <Loader />
             <div className="container relative h-full w-full mx-auto">
                 <Navbar />
                 <HoverNavbar />
-                <HeroSection />
+                <Suspense fallback={<Loading />}>
+                    <HeroSection />
+                </Suspense>
                 <AboutSection />
                 <SkillSection />
                 <ContactSection />
                 <FooterSection />
             </div>
         </section>
-
     );
 }
