@@ -16,9 +16,7 @@ export default function Home() {
             <div className="container relative h-full w-full mx-auto">
                 <Navbar />
                 <HoverNavbar />
-                <Suspense fallback={<Loading />}>
-                    <HeroSection />
-                </Suspense>
+                <HeroSection />
                 <AboutSection />
                 <SkillSection />
                 <ContactSection />
