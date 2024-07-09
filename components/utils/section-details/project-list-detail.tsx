@@ -24,7 +24,7 @@ const getProjectDetails = groq`*[_type == "profile" && fullName == "Evan Feliza"
 const ProjectCard = ({ data: cardData }: { data?: ProjectData }) => {
 
     return (
-        <div className='grid h-full w-full lg:grid-cols-2 border-[0.01em] group bg-base-100/50'>
+        <div className='grid h-full w-full lg:grid-cols-2 border-[0.01em] group bg-base-100/50 transition transform duration-300 hover:bg-base-200'>
             <div className='overflow-hidden h-full'>
                 <Image
                     src={`${cardData?.projectImage}`}
@@ -37,7 +37,7 @@ const ProjectCard = ({ data: cardData }: { data?: ProjectData }) => {
             </div>
             <div className='px-6 py-4'>
                 <div className='join items-center'>
-                    <h1 className='uppercase tracking-wider font-semibold text-2xl mr-4 group-hover:underline group-hover:underline-offset-4'>{cardData?.projectTitle}</h1>
+                    <h1 className='uppercase tracking-wider font-semibold text-2xl mr-4 group-hover:scale-105 group-hover:duration-300 transition-transform'>{cardData?.projectTitle}</h1>
                     <button className='btn btn-ghost btn-sm join-item'>
                         <a href={`${cardData?.projectCodeLink}`} target="_blank" >
                             <i className="fi fi-brands-github"></i>
@@ -51,7 +51,7 @@ const ProjectCard = ({ data: cardData }: { data?: ProjectData }) => {
                 </div>
                 <p className='text-wrap tracking-widest text-md font-medium mt-2 whitespace-normal break-normal'>{cardData?.projectDescription}</p>
                 <div className='flex flex-wrap gap-1 mt-4 lg:mt-2'>
-                    {cardData?.techTags.map(techTag => <span key={techTag} className='badge badge-md badge-accent text-xs' >{`#${techTag}`}</span>)}
+                    {cardData?.techTags.map(techTag => <span key={techTag} className='badge badge-md badge-ghost hover:badge-accent text-xs cursor-pointer' ><i className="fi fi-rr-tags mt-1 mr-2"></i>{techTag}</span>)}
                 </div>
             </div>
         </div>
