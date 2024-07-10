@@ -14,7 +14,7 @@ const SplashScreen = () => {
         }
     }, []);
     return (
-        <div id="splash-screen" className={`fixed bg-base-100 h-full w-full flex items-center justify-center z-50 transition-transform duration-[1500ms] `}>
+        <div id="splash-screen" className={`fixed bg-base-100 h-full w-full flex items-center justify-center z-50 transition-transform duration-[4000ms] `}>
             <span className='loader'></span>
         </div>
     )
