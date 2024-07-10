@@ -24,7 +24,7 @@ const getProjectDetails = groq`*[_type == "profile" && fullName == "Evan Feliza"
 const ProjectCard = ({ data: cardData }: { data?: ProjectData }) => {
 
     return (
-        <div className='grid h-full w-full lg:grid-cols-2 border-[0.01em] group bg-base-100/50 transition transform duration-300 hover:bg-base-200'>
+        <div className='grid h-full w-full lg:grid-cols-2 border-[0.01em] group bg-base-100/50 transition transform duration-300'>
             <div className='overflow-hidden h-full'>
                 <Image
                     src={`${cardData?.projectImage}`}
@@ -51,7 +51,7 @@ const ProjectCard = ({ data: cardData }: { data?: ProjectData }) => {
                 </div>
                 <p className='text-wrap tracking-widest text-md font-medium mt-2 whitespace-normal break-normal'>{cardData?.projectDescription}</p>
                 <div className='flex flex-wrap gap-1 mt-4 lg:mt-2'>
-                    {cardData?.techTags.map(techTag => <span key={techTag} className='badge badge-md badge-ghost hover:badge-accent text-xs cursor-pointer' ><i className="fi fi-rr-tags mt-1 mr-2"></i>{techTag}</span>)}
+                    {cardData?.techTags.map(techTag => <span key={techTag} className='badge badge-md hover:badge-outline badge-ghost text-xs cursor-pointer' ><i className="fi fi-rr-tags mt-1 mr-2"></i>{techTag}</span>)}
                 </div>
             </div>
         </div>
