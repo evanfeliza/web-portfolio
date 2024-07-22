@@ -24,7 +24,7 @@ const getProjectDetails = groq`*[_type == "profile" && fullName == "Evan Feliza"
 const ProjectCard = ({ data: cardData }: { data?: ProjectData }) => {
 
     return (
-        <div className='grid h-full w-full lg:grid-cols-2 border-[0.01em] group bg-base-100/50 transition transform duration-300'>
+        <div className='grid h-full w-full overflow-hidden lg:grid-cols-2 border-[0.01em] group bg-base-100/50 transition transform duration-300'>
             <div className='overflow-hidden h-full'>
                 <Image
                     src={`${cardData?.projectImage}`}
