@@ -5,8 +5,6 @@ import ContactSection from "@/components/sections/contact-section";
 import FooterSection from "@/components/sections/footer-section";
 import Navbar from "@/components/utils/navigations/navigation";
 import HoverNavbar from "@/components/utils/navigations/hover-navigation";
-import { Suspense } from "react";
-import Loading from "./loading";
 
 
 

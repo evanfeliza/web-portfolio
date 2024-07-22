@@ -62,7 +62,7 @@ const ProjectCard = ({ data: cardData }: { data?: ProjectData }) => {
 const ProjectList = async () => {
     const projectData = await client.fetch<ProjectData[]>(getProjectDetails)
 
-    return (<div className={`mt-4 grid grid-rows-auto lg:grid-cols-1 h-full `}>
+    return (<div>
         {projectData?.map(data => <ProjectCard data={data} key={data?.projectTitle} />)}
     </div>
     )
