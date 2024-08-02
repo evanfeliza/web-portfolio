@@ -48,7 +48,7 @@ const HeroSection = async () => {
         <section id="home" className='relative mx-auto h-auto'>
             <BackgroundLottie />
             <div className='max-h-full'>
-                <div className="flex flex-col lg:flex-row items-center justify-center px-6 py-4">
+                <div className="flex flex-col lg:flex-row items-center justify-center lg:px-12 px-6 py-16">
                     <div className='-order-first lg:order-first'>
                         <SocialLinksComponent data={profile.socialLinks} />
                     </div>

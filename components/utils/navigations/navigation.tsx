@@ -23,7 +23,7 @@ const NavbarLinks = () => {
 const Navbar = () => {
     return (
         <div className='w-full flex drop-shadow-md lg:drop-shadow-none items-center px-6 lg:px-12 py-4 absolute z-10'>
-            <div className='flex-1 '><DarkMode /></div>
+            <div className='flex-1 lg:px-6 py-6'><DarkMode /></div>
             <div className='flex-none hidden md:block                                                                                                                                                                                  '><NavbarLinks /></div>
         </div>
     )
