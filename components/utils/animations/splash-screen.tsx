@@ -7,10 +7,10 @@ const SplashScreen = () => {
         if (typeof window !== 'undefined') {
             const loader = document.getElementById('splash-screen');
             if (loader) {
-                loader?.remove();
+                setTimeout(() => {
+                    loader?.remove();
+                }, 3000)
             }
-
-
         }
     }, []);
     return (
