@@ -15,6 +15,13 @@ html{
   font-style: normal;
 }
 
+html {
+  --cursor-color: #444
+}
+
+html.dark-cursor {
+  --cursor-color: #ffff
+}
 @layer utilities {
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar::-webkit-scrollbar {

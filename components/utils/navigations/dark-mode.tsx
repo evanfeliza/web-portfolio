@@ -8,6 +8,11 @@ const DarkMode = () => {
     useEffect(() => {
         document.querySelector("html")?.setAttribute("data-theme", theme)
         document.querySelector("html")?.classList.add("duration-100")
+        if (theme === "black") {
+            document.querySelector("html")?.classList.add("dark-cursor")
+        } else {
+            document.querySelector("html")?.classList.remove("dark-cursor")
+        }
     }, [theme])
 
 
