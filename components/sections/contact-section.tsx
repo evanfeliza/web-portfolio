@@ -1,4 +1,4 @@
-import { client } from '@/sanity/lib/client';
+import { client, sanityFetch } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 
 
@@ -11,7 +11,7 @@ type SocialLink = {
 const getEmail = groq`*[_type == "profile" && fullName == "Evan Feliza"]{socialLinks{googleEmail}}[0]`
 
 const ContactSection = async () => {
-    const email = await client.fetch<SocialLink>(getEmail)
+    const email = await sanityFetch<SocialLink>({ query: getEmail, revalidate: 3600 })
 
     return (
         <section id="contact" className='flex-col lg:flex-row flex items-center justify-center px-6 py-[18rem]'>

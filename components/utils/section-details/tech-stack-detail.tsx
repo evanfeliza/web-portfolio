@@ -1,4 +1,4 @@
-import { client } from '@/sanity/lib/client';
+import { client, sanityFetch } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 
 
@@ -19,10 +19,10 @@ const TechStackCard = ({ name }: { name: string }) => {
 }
 
 const TechStackDetail = async () => {
-    const data = await client.fetch<TechStack>(getTechStackDetail)
+    const data = await sanityFetch<TechStack>({ query: getTechStackDetail, revalidate: 3600 })
     return (
 
-        <div data-aos="fade-in" data-aos-duration="2000" className="mt-5 mx-auto max-w-[30rem] lg:max-w-[90rem] grid grid-cols-2 lg:grid-cols-3 items-center gap-10">
+        <div className="mt-5 mx-auto max-w-[30rem] lg:max-w-[90rem] grid grid-cols-2 lg:grid-cols-3 items-center gap-10">
             {data?.techStack?.map(stack => (<TechStackCard key={stack} name={stack} />))}
         </div>
     )

@@ -12,11 +12,13 @@ const SkillSection = () => {
                 <p className='text-lg tracking-wider mt-5'> Here are some of my personal projects that I have made so far.</p>
             </div>
             <ProjectList />
-            <div className='my-20 py-4'>
+            <div className='my-20'>
                 <div className='mx-auto '>
                     <p className='text-md tracking-wider'> These are the technologies I have used so far...</p>
                 </div>
-                <TechStackDetail />
+                <div className='w-full py-10'>
+                    <TechStackDetail />
+                </div>
             </div>
         </section>
     )

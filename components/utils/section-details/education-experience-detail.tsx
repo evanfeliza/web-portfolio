@@ -1,4 +1,4 @@
-import { client } from '@/sanity/lib/client';
+import { client, sanityFetch } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 import classnames from 'classnames';
 import GeneratedIcon from '../generator/icon-generator';
@@ -73,7 +73,7 @@ const MobileTimeline = ({ timelineData }: { timelineData?: Timeline[] }) => {
 }
 
 const EducationAndExperiencesDetail = async () => {
-    const timelineData = await client.fetch<Timeline[]>(getEducationDetails)
+    const timelineData = await sanityFetch<Timeline[]>({ query: getEducationDetails, revalidate: 3600 })
     return (
         <div data-aos="fade-up" data-aos-duration="1000" className="my-0 max-h-full max-w-full" >
             <div className='h-full w-full'>

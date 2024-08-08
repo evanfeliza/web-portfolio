@@ -3,7 +3,7 @@ import Link from 'next/link';
 import BackgroundLottie from '@/components/background';
 import HeroImageLottie from '@/components/hero-image';
 import { groq } from 'next-sanity';
-import { client } from '@/sanity/lib/client';
+import { client, sanityFetch } from '@/sanity/lib/client';
 
 // Define your types
 type SocialLinks = {
@@ -42,7 +42,7 @@ const SocialLinksComponent = ({ data }: { data?: SocialLinks }) => {
 };
 
 const HeroSection = async () => {
-    const profile = await client.fetch<Profile>(getProfile);
+    const profile = await sanityFetch<Profile>({ query: getProfile, revalidate: 3600 });
 
     return (
         <section id="home" className='relative mx-auto h-auto'>
