@@ -36,20 +36,23 @@ const ProjectCard = ({ data: cardData }: { data?: ProjectData }) => {
                 />}
             </div>
 
-            <div className='px-6 py-4'>
-                <div className='join items-center'>
-                    <h1 className='uppercase tracking-wider font-semibold text-3xl mr-4 group-hover:scale-105 group-hover:duration-300 transition-transform'>{cardData?.projectTitle}</h1>
-                    <button className='btn btn-ghost btn-sm join-item'>
-                        <a href={`${cardData?.projectCodeLink}`} target="_blank" >
-                            <i className="fi fi-brands-github"></i>
-                        </a>
-                    </button>
-                    <button className='btn btn-ghost btn-sm join-item'>
-                        <a href={`${cardData?.projectDemoLink}`} target="_blank" >
-                            <i className="fi fi-br-link"></i>
-                        </a>
-                    </button>
+            <div className='px-6 py-4  max-w-full'>
+                <div className='flex flex-col lg:flex-row lg:items-center lg:space-x-4'>
+                    <h1 className='uppercase tracking-wider font-semibold text-3xl mr-4 group-hover:scale-105 group-hover:duration-300 transition-transform block'>{cardData?.projectTitle}</h1>
+                    <div className='join -ml-3 lg:ml-0'>
+                        <button className='btn btn-ghost btn-sm join-item inline-block'>
+                            <a href={`${cardData?.projectCodeLink}`} target="_blank" >
+                                <i className="fi fi-brands-github"></i>
+                            </a>
+                        </button>
+                        <button className='btn btn-ghost btn-sm join-item inline-block'>
+                            <a href={`${cardData?.projectDemoLink}`} target="_blank" >
+                                <i className="fi fi-br-link"></i>
+                            </a>
+                        </button>
+                    </div>
                 </div>
+
                 <p className='text-wrap tracking-widest text-md font-medium mt-2 whitespace-normal break-normal'>{cardData?.projectDescription}</p>
                 <div className='flex flex-wrap gap-1 mt-4 lg:mt-2'>
                     {cardData?.techTags?.map(techTag => <span key={techTag} className='badge badge-md hover:badge-outline badge-ghost text-xs cursor-pointer' ><i className="fi fi-rr-tags mt-1 mr-2"></i>{techTag}</span>)}
