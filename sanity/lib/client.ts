@@ -6,7 +6,8 @@ import {
 import {
   apiVersion,
   dataset,
-  projectId
+  projectId,
+  useCdn
 } from "../env";
 
 export const client =
@@ -15,6 +16,7 @@ export const client =
       projectId,
       dataset,
       apiVersion,
+      useCdn,
       perspective:
         "published"
     }
