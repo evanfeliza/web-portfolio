@@ -12,9 +12,9 @@ const getTechStackDetail = groq`*[_type == "profile" && fullName == "Evan Feliza
 
 
 const TechStackCard = ({ name }: { name: string }) => {
-    return (<div data-tip={`${name}`} className='h-100 w-100 grayscale-[80%] tooltip tooltip-top capitalize   cursor-pointer hover:grayscale-0 duration-300 flex items-center justify-center mt-4'>
+    return (<div data-tip={`${name}`} className='h-100 w-100 grayscale-[80%] dark:grayscale tooltip tooltip-top capitalize cursor-pointer hover:grayscale-0 duration-300 flex items-center justify-center mt-4'>
         <i className={`text-4xl text-base-300 devicon-${name}-plain colored mr-3`}></i>
-        <span className='hidden lg:block text-sm font-bold  uppercase tracking-wider'>{name}</span>
+        <span className='block lg:hidden text-sm font-bold  uppercase tracking-wider'>{name}</span>
     </div>)
 }
 

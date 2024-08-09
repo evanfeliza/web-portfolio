@@ -35,9 +35,10 @@ const ProjectCard = ({ data: cardData }: { data?: ProjectData }) => {
                     className="object-contain lg:object-fill h-full group-hover:scale-105 transition-transform duration-300"
                 />}
             </div>
+
             <div className='px-6 py-4'>
                 <div className='join items-center'>
-                    <h1 className='uppercase tracking-wider font-semibold text-2xl mr-4 group-hover:scale-105 group-hover:duration-300 transition-transform'>{cardData?.projectTitle}</h1>
+                    <h1 className='uppercase tracking-wider font-semibold text-3xl mr-4 group-hover:scale-105 group-hover:duration-300 transition-transform'>{cardData?.projectTitle}</h1>
                     <button className='btn btn-ghost btn-sm join-item'>
                         <a href={`${cardData?.projectCodeLink}`} target="_blank" >
                             <i className="fi fi-brands-github"></i>
