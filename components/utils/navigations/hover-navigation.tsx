@@ -68,7 +68,7 @@ const NavbarLinks = () => {
 
 
     return (
-        <ul className='flex flex-row gap-1 lg:my-auto bg-base-200 p-2 rounded-md '>
+        <ul className='flex flex-row gap-1 lg:my-auto bg-base-200 p-2 rounded-md dark:border dark:border-accent'>
             {navigations?.map((navigation) => {
                 return (
                     <Link onClick={() => {
