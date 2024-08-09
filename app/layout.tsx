@@ -4,6 +4,7 @@ import "./globals.css"
 import AnimateOnScroll from '@/components/utils/animations/aos';
 import SplashScreen from '@/components/utils/animations/splash-screen';
 import AnimatedCursor from '@/components/utils/animations/animated-cursor';
+import { Poppins } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Evan Feliza",
@@ -13,6 +14,12 @@ export const metadata: Metadata = {
   }
 };
 
+const poppins = Poppins({
+  subsets: ["latin-ext"],
+  weight: "300"
+});
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -21,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className='overflow-y-scroll no-scrollbar'>
       <AnimateOnScroll />
-      <body>
+      <body className={poppins.className}>
         <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
         <AnimatedCursor />
         <SplashScreen />

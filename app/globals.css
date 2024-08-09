@@ -12,11 +12,7 @@
 
 
 html{
-  font-family: "Poppins", sans-serif;
-}
-
-html {
-  --cursor-color: #444
+  --cursor-color: #444;
 }
 
 html.dark-cursor {
