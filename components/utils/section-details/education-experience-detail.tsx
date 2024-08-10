@@ -1,4 +1,4 @@
-import { client, sanityFetch } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 import classnames from 'classnames';
 import GeneratedIcon from '../generator/icon-generator';

@@ -9,7 +9,7 @@ const navigations = [
 const NavbarLinks = () => {
 
     return (
-        <ul className='menu menu-horizontal divide-x-[0.01rem] tracking-widest font-semibold '>
+        <ul className='menu menu-horizontal divide-x-[0.01rem] tracking-[0.5em] font-semibold '>
             {navigations?.map((navigation, index) => (<li key={index} className={`uppercase`}>
                 <Link href={
                     `#${navigation}`

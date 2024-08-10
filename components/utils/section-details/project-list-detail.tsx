@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { client, sanityFetch } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 
 type ProjectData = {

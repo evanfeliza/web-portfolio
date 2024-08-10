@@ -1,4 +1,4 @@
-import { client, sanityFetch } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
 
 
@@ -22,7 +22,7 @@ const ContactSection = async () => {
             <div data-aos="fade-in" data-aos-duration="2000" className="card card-normal mx-auto mt-4 lg:mt-0">
                 <a href={`mailto:${email?.socialLinks?.googleEmail}`} target="_blank" className=' btn my-2 btn-outline'>
                     <span className="mr-1">Send an Email</span>
-                    <i className="fi fi-rs-paper-plane"></i>
+                    <i className="fi fi-rs-paper-plane text-xl mt-1"></i>
                 </a>
             </div>
         </section>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import BackgroundLottie from '@/components/background';
 import HeroImageLottie from '@/components/hero-image';
 import { groq } from 'next-sanity';
-import { client, sanityFetch } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/client';
 
 // Define your types
 type SocialLinks = {
@@ -53,13 +53,13 @@ const HeroSection = async () => {
                         <SocialLinksComponent data={profile.socialLinks} />
                     </div>
                     <div className='text-wrap mt-20 mb-0 lg:my-28 space-y-4'>
-                        <h3 data-aos="fade-right" data-aos-duration="2000" className='p-0 text-2xl lg:text-4xl font-medium tracking-wider'>Hi there, I am</h3>
-                        <h1 data-aos="fade-right" data-aos-duration="2000" className='text-7xl lg:text-8xl font-bold tracking-wide lg:tracking-tight text-pretty'>{profile.fullName}</h1>
+                        <h3 data-aos="fade-right" data-aos-duration="2000" className='p-0 text-2xl lg:text-3xl font-medium tracking-wider'>Hi there, I am</h3>
+                        <h1 data-aos="fade-right" data-aos-duration="2000" className='text-7xl lg:text-8xl font-bold tracking-wide lg:tracking-wider text-pretty'>{profile.fullName}</h1>
                         <p data-aos="fade-up" data-aos-duration="2000" className='leading-7 text-lg lg:text-xl lg:text-md tracking-wider font-light my-4 text-wrap'>
                             {profile.description}</p>
                         <Link href={profile.resumeURL} target="_blank" rel="noopener noreferrer" className={`btn my-2 btn-outline btn-md ${!profile.resumeURL && "btn-disabled"}`}>
                             <span className="mr-1 uppercase tracking-widest">download my cv</span>
-                            <i className="fi fi-rr-angle-double-small-right "></i>
+                            <i className="fi fi-rr-angle-double-small-right mt-1 text-xl"></i>
                         </Link>
                     </div>
                     <HeroImageLottie />
