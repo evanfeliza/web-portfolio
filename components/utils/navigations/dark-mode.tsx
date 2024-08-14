@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 
 
 const DarkMode = () => {
-    const [theme, setTheme] = useState<string>("black")
+    const [theme, setTheme] = useState<string>("lofi")
     useEffect(() => {
         document.querySelector("html")?.setAttribute("data-theme", theme)
         document.querySelector("html")?.classList.add("duration-100")
@@ -17,7 +17,7 @@ const DarkMode = () => {
 
 
     const toggleTheme = () => {
-        setTheme(theme !== "black" ? "black" : "lofi")
+        setTheme(theme !== "lofi" ? "lofi" : "black")
     }
     return (
         <label className='swap swap-rotate'>

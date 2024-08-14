@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className='overflow-y-scroll no-scrollbar'>
+    <html lang="en" data-theme="lofi" className='overflow-y-scroll no-scrollbar'>
       <AnimateOnScroll />
       <body className={poppins.className}>
         <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
