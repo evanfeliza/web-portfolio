@@ -1,8 +1,12 @@
-"use client"
+'use client';
 
 import React from 'react'
-import Lottie from 'react-lottie-player';
+import dynamic from 'next/dynamic';
 import gridLottie from "../components/src/json/grid-lottie.json";
+
+const Lottie = dynamic(() => import('react-lottie-player'), {
+    ssr: false,
+})
 
 
 const BackgroundLottie = () => {

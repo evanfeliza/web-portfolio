@@ -1,8 +1,14 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-import Lottie from 'react-lottie-player'
+import dynamic from 'next/dynamic';
 import codeLottieDark from "../components/src/json/code-light.json";
 import codeLottieLight from "../components/src/json/code-dark.json";
+
+const Lottie = dynamic(() => import('react-lottie-player'), {
+    ssr: false,
+})
+
+
 
 const HeroImageLottie = () => {
     const [themeValue, setThemeValue] = useState<string>("");
@@ -20,7 +26,7 @@ const HeroImageLottie = () => {
         return () => {
             observer.disconnect();
         };
-    }, []);
+    }, [themeValue]);
 
     return (
         <Lottie

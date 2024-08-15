@@ -58,7 +58,7 @@ const HeroSection = async () => {
                         <p data-aos="fade-up" data-aos-duration="2000" className='leading-7 text-lg lg:text-xl lg:text-md tracking-wider font-light my-4 text-wrap'>
                             {profile.description}</p>
                         <Link href={profile.resumeURL} target="_blank" rel="noopener noreferrer" className={`btn my-2 btn-outline btn-md ${!profile.resumeURL && "btn-disabled"}`}>
-                            <span className="mr-1 uppercase tracking-widest">download my cv</span>
+                            <span className="mr-1 uppercase tracking-[0.3em]">download my cv</span>
                             <i className="fi fi-rr-angle-double-small-right mt-1 text-xl"></i>
                         </Link>
                     </div>
